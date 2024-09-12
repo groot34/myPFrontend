@@ -35,7 +35,7 @@ const Contact = () => {
       // const url=import.meta.env.VITE_BACKEND;
      const url = "https://my-pf-backend.vercel.app";
       // Make the request to your Express backend to send the email using Axios
-      const response = await axios.post(`https://my-pf-backend.vercel.app/send-email`, {
+      const response = await axios.post(`/api/send-email`, {
         name: formData.name,  
         email: formData.email,
         message: formData.message,
