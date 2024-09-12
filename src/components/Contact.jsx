@@ -1,4 +1,7 @@
+// 
+
 import React, { useState } from 'react';
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,34 +32,30 @@ const Contact = () => {
     }
 
     try {
-      console.log(import.meta.env.VITE_BACKEND);
-
-      // Make the request to your Express backend to send the email
-      const response = await fetch(`${import.meta.env.VITE_BACKEND}/send-email`, {
-        method: 'POST',
+      // const url=import.meta.env.VITE_BACKEND;
+     const url = "https://my-pf-backend.vercel.app";
+      // Make the request to your Express backend to send the email using Axios
+      const response = await axios.post(`https://my-pf-backend.vercel.app/send-email`, {
+        name: formData.name,  
+        email: formData.email,
+        message: formData.message,
+       } , {    
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
       });
-      
 
-      const result = await response.json();
-
-      if (response.ok) {
+    
+      if (response.status === 200) {
         toast.success("Message sent successfully!");
         setFormData({ name: '', email: '', message: '' });
       } else {
-        toast.error(result.message || "Failed to send message");
-        console.error(result.error);
+        toast.error(response.data.message || "Failed to send message");
+        console.error(response.data.error);
       }
     } catch (error) {
       toast.error("Failed to send message");
-      console.error('Error sending email:', error);
+      console.error('Error sending email:', error.response ? error.response.data : error.message);
     }
   };
 
