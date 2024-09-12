@@ -31,7 +31,7 @@ const Contact = () => {
     }
 
     try {
-      const url = "https://my-pf-backend.vercel.app/api/send-email";
+      const url = "/api/send-email";
       const response = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'application/json',
