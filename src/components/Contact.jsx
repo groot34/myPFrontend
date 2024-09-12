@@ -1,9 +1,8 @@
-// 
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,32 +25,24 @@ const Contact = () => {
     const { name, email, message } = formData;
 
     // Validation
-    if (!name || !email || !message) {   
+    if (!name || !email || !message) {
       toast.error("Please fill in all fields");
       return;
     }
 
     try {
-      // const url=import.meta.env.VITE_BACKEND;
-     const url = "https://my-pf-backend.vercel.app";
-      // Make the request to your Express backend to send the email using Axios
-      const response = await axios.post(`/api/send-email`, {
-        name: formData.name,  
-        email: formData.email,
-        message: formData.message,
-       } , {    
+      const url = "https://my-pf-backend.vercel.app/api/send-email";
+      const response = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-    
       if (response.status === 200) {
         toast.success("Message sent successfully!");
         setFormData({ name: '', email: '', message: '' });
       } else {
         toast.error(response.data.message || "Failed to send message");
-        console.error(response.data.error);
       }
     } catch (error) {
       toast.error("Failed to send message");
@@ -60,9 +51,23 @@ const Contact = () => {
   };
 
   return (
-    <div className="border-b border-neutral-900 pb-20">
-      <h2 className="my-10 text-center text-4xl">Get in Touch</h2>
-      <div className="flex justify-center">
+    <motion.div
+      className="border-b border-neutral-900 pb-20"
+    >
+      <motion.h2
+      whileInView={{opacity:1, y:0}}
+      initial={{opacity:0, y:-100}}
+      transition={{duration:0.5}}
+        className="my-10 text-center text-4xl"
+      >
+        Get in Touch
+      </motion.h2>
+      <motion.div
+      whileInView={{opacity:1, y:0}}
+      initial={{opacity:0, y:100}}
+      transition={{duration:0.5}}
+        className="flex justify-center"
+      >
         <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-6 p-4 md:p-8 bg-gray-700 rounded-lg shadow-lg">
           <div>
             <label htmlFor="name" className="block text-sm font-medium">Name</label>
@@ -110,10 +115,10 @@ const Contact = () => {
             Send Message
           </button>
         </form>
-      </div>
+      </motion.div>
       <ToastContainer />
-    </div>
+    </motion.div>
   );
 };
-   
+
 export default Contact;
