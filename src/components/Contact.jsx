@@ -29,6 +29,8 @@ const Contact = () => {
     }
 
     try {
+      console.log(import.meta.env.VITE_BACKEND); // Ensure this logs the correct backend URL
+
       // Make the request to your Express backend to send the email
       const response = await fetch(`${import.meta.env.VITE_BACKEND}/send-email`, {
         method: 'POST',
@@ -48,7 +50,7 @@ const Contact = () => {
         toast.success("Message sent successfully!");
         setFormData({ name: '', email: '', message: '' });
       } else {
-        toast.error("Failed to send message");
+        toast.error(result.message || "Failed to send message");
         console.error(result.error);
       }
     } catch (error) {
@@ -113,5 +115,5 @@ const Contact = () => {
     </div>
   );
 };
-
+   
 export default Contact;

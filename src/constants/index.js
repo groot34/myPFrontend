@@ -63,8 +63,8 @@ export const PROJECTS = [
     description:
       "A personal portfolio showcasing projects and skills, built with React and Tailwind CSS, featuring smooth animations with Framer Motion.",
     technologies: ["React", "Tailwindcss", "Framer Motion"],
-    liveLink: "http://localhost:5173/",
-    githubLink: "https://github.com/user/portfolio"
+    liveLink: "https://athax.vercel.app/",
+    githubLink: "https://github.com/groot34/myPf-frontend"
   }
   
   
