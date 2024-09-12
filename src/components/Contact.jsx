@@ -29,10 +29,10 @@ const Contact = () => {
     }
 
     try {
-      console.log(import.meta.env.VITE_BACKEND); // Ensure this logs the correct backend URL
+      console.log(import.meta.env.VITE_BACKEND);
 
       // Make the request to your Express backend to send the email
-      const response = await fetch(`${import.meta.env.VITE_BACKEND}/send-email`, {
+      const response = await fetch(`/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
