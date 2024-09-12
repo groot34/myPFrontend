@@ -32,7 +32,7 @@ const Contact = () => {
       console.log(import.meta.env.VITE_BACKEND);
 
       // Make the request to your Express backend to send the email
-      const response = await fetch(`/api/send-email`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,6 +43,7 @@ const Contact = () => {
           message: formData.message,
         }),
       });
+      
 
       const result = await response.json();
 
