@@ -1,12 +1,9 @@
 {
     "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "https://my-pf-backend.vercel.app/api/$1"  
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/"
-        }
+      {
+        "source": "/api/(.*)",
+        "destination": "https://my-pf-backend.vercel.app/api/$1"
+      }
     ]
-}
+  }
+  
