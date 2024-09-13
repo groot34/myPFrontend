@@ -3,6 +3,11 @@ import project2 from "../assets/projects/project-2.png";
 import project3 from "../assets/projects/project-3.png";
 import project4 from "../assets/projects/project-4.png";
 
+import frontend from "../assets/cards/frontend.png";
+import backend from "../assets/cards/backend.png";
+import ux from "../assets/cards/ux.png";  
+import prototyping from "../assets/cards/prototyping.png";
+
 export const HERO_CONTENT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with a knack for crafting robust and scalable web applications. With 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
 
 export const ABOUT_TEXT = `I am a dedicated and versatile full-stack developer with a passion for creating efficient and user-friendly web applications. With 2 years of professional experience, I have worked with a range of technologies, including React, Next.js, Node.js, MySQL, PostgreSQL, and MongoDB. My journey in web development began with a deep curiosity about how things work, which has evolved into a career where I continuously strive to learn and adapt to new challenges.
@@ -69,6 +74,25 @@ export const PROJECTS = [
   
   
 
+];
+
+export const services = [
+  {
+    title: 'Frontend Developer',
+    icon: frontend,
+  },
+  {
+    title: 'UI/UX Design',
+    icon: ux,
+  },
+  {
+    title: 'Web devlopement',
+    icon: prototyping,
+  },
+  {
+    title: 'Backend Developer',
+    icon: backend,
+  },
 ];
 
 export const CONTACT = {
