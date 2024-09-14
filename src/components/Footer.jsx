@@ -11,19 +11,19 @@ const Footer = () => {
         <motion.img
           src={reactIcon}
           alt="React"
-          className="w-6 h-6 inline-block mx-1 align-middle"
+          className="w-6 h-6 inline-block mx-2 align-middle" // Added mx-2 for spacing
           animate={{ rotate: 360 }}
           transition={{
             repeat: Infinity,
-            duration: 2, 
-            ease: "linear", 
+            duration: 2,
+            ease: "linear",
           }}
-        />{""}
-        and 
+        />
+        and
         <img
           src={framerMotionIcon}
           alt="Framer Motion"
-          className="w-6 h-6 inline-block mx-1 align-middle"
+          className="w-6 h-6 inline-block mx-2 align-middle" // Added mx-2 for spacing
         />
       </p>
     </div>
