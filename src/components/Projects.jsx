@@ -50,11 +50,18 @@ const Projects = () => {
   // Duplicating the project list for seamless infinite scrolling on larger screens
   const duplicatedProjects = [...PROJECTS, ...PROJECTS]; // Double the array for smooth looping
 
-  // Define alternating animations for mobile view
-  const getMobileAnimation = (index) => {
-    return index % 2 === 0
-      ? { x: [-100, 0], opacity: [0, 1] } // Left-to-right for odd projects
-      : { x: [100, 0], opacity: [0, 1] }; // Right-to-left for even projects
+  // Redirect function to open links in a new tab
+  const redirect = (url) => {
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      console.error("URL is not provided.");
+    }
+  };
+
+  // Handle click for buttons
+  const handleClick = (url) => {
+    redirect(url);
   };
 
   return (
@@ -105,13 +112,13 @@ const Projects = () => {
                 {/* Buttons for Live Link and GitHub Repo */}
                 <div className="flex justify-center space-x-4">
                   <button
-                    onClick={() => handleLiveDemoClick(project.liveLink)}
+                    onClick={() => handleClick(project.liveLink)}
                     className="cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300"
                   >
                     Live Demo
                   </button>
                   <button
-                    onClick={() => handleGithubRepoClick(project.githubLink)}
+                    onClick={() => handleClick(project.githubLink)}
                     className="cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300"
                   >
                     GitHub Repo
@@ -160,13 +167,13 @@ const Projects = () => {
                 {/* Buttons for Live Link and GitHub Repo */}
                 <div className="flex space-x-4">
                   <button
-                    onClick={() => handleLiveDemoClick(project.liveLink)}
+                    onClick={() => handleClick(project.liveLink)}
                     className="cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300"
                   >
                     Live Demo
                   </button>
                   <button
-                    onClick={() => handleGithubRepoClick(project.githubLink)}
+                    onClick={() => handleClick(project.githubLink)}
                     className="cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300"
                   >
                     GitHub Repo
