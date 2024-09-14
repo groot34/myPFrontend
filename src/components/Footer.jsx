@@ -6,7 +6,7 @@ import framerMotionIcon from "../assets/framer-motion-icon.svg";
 const Footer = () => {
   return (
     <div className="container mx-auto text-center mt-3 mb-3">
-      <p className="text-lg">
+      <p className="text-2xl">
         Made with <span className="text-red-500">❤️</span> by Atharva using
         <motion.img
           src={reactIcon}
@@ -18,12 +18,12 @@ const Footer = () => {
             duration: 2, 
             ease: "linear", 
           }}
-        />{" "}
-        and
+        />{""}
+        and 
         <img
           src={framerMotionIcon}
           alt="Framer Motion"
-          className="w-4 h-4 inline-block mx-1 align-middle"
+          className="w-6 h-6 inline-block mx-1 align-middle"
         />
       </p>
     </div>

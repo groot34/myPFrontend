@@ -8,15 +8,16 @@ import backend from "../assets/cards/backend.png";
 import ux from "../assets/cards/ux.png";  
 import prototyping from "../assets/cards/prototyping.png";
 
-export const HERO_CONTENT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with a knack for crafting robust and scalable web applications. With 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
+export const HERO_CONTENT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with a knack for crafting robust and scalable web applications. With 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences. Let's build something amazing together!`;
 
-export const ABOUT_TEXT = `I am a dedicated and versatile full-stack developer with a passion for creating efficient and user-friendly web applications. With 2 years of professional experience, I have worked with a range of technologies, including React, Next.js, Node.js, MySQL, PostgreSQL, and MongoDB. My journey in web development began with a deep curiosity about how things work, which has evolved into a career where I continuously strive to learn and adapt to new challenges.
+export const ABOUT_TEXT = `
+I’m a passionate full-stack developer with a flair for both front-end and back-end magic. With 2 years of experience, I’ve turned ideas into reality by crafting beautiful user interfaces with React and Next.js, while seamlessly integrating databases like MySQL, PostgreSQL, and MongoDB on the back end. Driven by constant curiosity, I thrive on learning and embracing the latest technologies. Whether it’s building websites from scratch or tackling new challenges, I’m always ready to create something extraordinary.
 
-I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Currently, I am exploring the DevOps domain, while also sharpening my skills in Data Structures and Algorithms (DSA) and competitive programming. Outside of coding, I enjoy staying active, exploring new technologies, and collaborating with others.`;
+I excel in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Currently, I am exploring the DevOps domain while sharpening my skills in Data Structures and Algorithms (DSA) and competitive programming. Outside of coding, I enjoy staying active, exploring new technologies, and keeping up with politics and geopolitics.`;
 
 export const EXPERIENCES = [
   {
-    year: "June 2023-July 2023",
+    year: "June 2024-July 2024",
     role: "React, React-Native Developer",
     company: "Stakesmen",
     description: `Collaborated with Web and Automation teams to optimize processes, enhance performance, and upscale the application using React and React Native. Redesigned outdated functions for improved efficiency and utilized Expo for mobile development. Focused on testing and debugging to ensure smooth functionality and data accuracy.`,
@@ -58,7 +59,7 @@ export const PROJECTS = [
     image: project3,
     description:
       "Developed a social media app with messaging, communities, and notifications using MongoDB and Uploadthing. SSR with Next.js improved SEO, while Tailwind CSS created a responsive UI, increasing engagement by 30%.",
-    technologies: ["NextJs", "TypeScript", "UploadThing", "MongoDB", "Clerk"],
+    technologies: ["NextJs", "UploadThing", "MongoDB", "Clerk"],
     liveLink: "https://5ocial.vercel.app/",
     githubLink: "https://github.com/groot34/5ocial"
   },
