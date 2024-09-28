@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { FaBars } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
 import logo from "../assets/Letter A.svg";
-import { FaLinkedin, FaGithub, FaXTwitter, FaInstagram } from "react-icons/fa6";
-import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
 
 const Navbar = () => {
-  const redirectTo = (url) => {
-    window.open(url, "_blank");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    // Prevent scrolling when the mobile menu is open
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isOpen]);
+
   return (
-    <nav className="mb-20 flex items-center justify-between py-6">
-      <div className="flex flex-shrink-0 items-center">
+    <nav id="navbar" className="mb-20 flex items-center justify-between py-6">
+      <div className="flex items-center">
         <img
           className="mx-2 w-20 cursor-pointer"
           src={logo}
@@ -19,14 +30,43 @@ const Navbar = () => {
         />
       </div>
 
-      <div className="m-8 flex items-center justify-center gap-4 text-2xl">
-        <FaLinkedin className="cursor-pointer" onClick={() => redirectTo("https://www.linkedin.com/in/groot34/")} />
-        <FaGithub className="cursor-pointer" onClick={() => redirectTo("https://github.com/groot34")} />
-        <FaInstagram className="cursor-pointer" onClick={() => redirectTo("https://www.instagram.com/a.th.a.rva/")} />
-        <FaXTwitter className="cursor-pointer" onClick={() => redirectTo("https://x.com/groot34_")} />
-        <SiGeeksforgeeks className="cursor-pointer" onClick={() => redirectTo("https://www.geeksforgeeks.org/user/groot34/")} />
-        <SiLeetcode className="cursor-pointer" onClick={() => redirectTo("https://leetcode.com/u/groot34/")} />
+      <div className="hidden md:flex items-center gap-8 text-3xl">
+        <a href="#about" className="cursor-pointer font-bold hover:text-gray-500">
+          About
+        </a>
+        <a href="#projects" className="cursor-pointer font-bold hover:text-gray-500">
+          Projects
+        </a>
+        <a href="#contact" className="cursor-pointer font-bold hover:text-gray-500">
+          Contact
+        </a>
       </div>
+
+      {/* Hamburger Menu for mobile view */}
+      <div className="md:hidden">
+        <button onClick={toggleMenu}>
+          {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 bg-black md:hidden flex flex-col items-center justify-center text-xl text-white">
+          {/* Cross Icon */}
+          <button className="absolute top-5 right-5 text-3xl" onClick={toggleMenu}>
+            <FaTimes />
+          </button>
+          <a href="#about" className="cursor-pointer font-bold hover:text-gray-500" onClick={toggleMenu}>
+            About
+          </a>
+          <a href="#projects" className="cursor-pointer font-bold hover:text-gray-500" onClick={toggleMenu}>
+            Projects
+          </a>
+          <a href="#contact" className="cursor-pointer font-bold hover:text-gray-500" onClick={toggleMenu}>
+            Contact
+          </a>
+        </div>
+      )}
     </nav>
   );
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
+import { FaInstagram, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'; // Import social icons
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -51,21 +52,22 @@ const Contact = () => {
   };
 
   return (
-    <motion.div
+    <motion.div id="contact"
       className="border-b border-neutral-900 pb-20"
     >
       <motion.h2
-      whileInView={{opacity:1, y:0}}
-      initial={{opacity:0, y:-100}}
-      transition={{duration:0.5}}
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
         className="my-10 text-center text-4xl"
       >
         Get in Touch
       </motion.h2>
+
       <motion.div
-      whileInView={{opacity:1, y:0}}
-      initial={{opacity:0, y:100}}
-      transition={{duration:0.5}}
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 100 }}
+        transition={{ duration: 0.5 }}
         className="flex justify-center"
       >
         <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-6 p-4 md:p-8 bg-gray-700 rounded-lg shadow-lg">
@@ -116,6 +118,23 @@ const Contact = () => {
           </button>
         </form>
       </motion.div>
+
+      {/* Social Icons Section */}
+      <div className="flex justify-center mt-8 space-x-8">
+        <a href="https://www.instagram.com/a.th.a.rva/" target="_blank" rel="noopener noreferrer">
+          <FaInstagram className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+        </a>
+        <a href="https://twitter.com/groot34_" target="_blank" rel="noopener noreferrer">
+          <FaTwitter className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+        </a>
+        <a href="https://github.com/groot34" target="_blank" rel="noopener noreferrer">
+          <FaGithub className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+        </a>
+        <a href="https://www.linkedin.com/in/groot34/" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+        </a>
+      </div>
+
       <ToastContainer />
     </motion.div>
   );

@@ -27,6 +27,8 @@ import typescriptIcon from "../assets/typescript-icon.svg";
 import vercelIcon from "../assets/vercel-icon.svg";
 import vscodeIcon from "../assets/vscode-icon.svg";
 import jwtIcon from "../assets/jwt-icon.svg";
+import viteIcon from "../assets/vite-icon.svg";  
+
 
 
 const ParticleBackground = () => {
@@ -37,7 +39,7 @@ const ParticleBackground = () => {
 
   const iconsArray = [
     reactIcon, bootstrapIcon, canvaIcon, cppIcon, cssIcon, expressIcon,
-    firebaseIcon, gitIcon, githubIcon, htmlIcon, jsIcon, mongodbIcon,
+    firebaseIcon, viteIcon,gitIcon, githubIcon, htmlIcon, jsIcon, mongodbIcon,
     mysqlIcon, netlifyIcon, nextjsIcon, nodeIcon, postgresqlIcon,
     postmanIcon, reduxIcon, tailwindcssIcon, typescriptIcon, vercelIcon,
     vscodeIcon, jwtIcon
@@ -100,7 +102,7 @@ const ParticleBackground = () => {
             straight: false
           },
           number: {
-            value: iconsArray.length, // Set the number of particles to match the number of icons
+            value: 22, // Set the number of particles to match the number of icons
             density: {
               enable: true,
               area: 800

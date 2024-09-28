@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import aboutAtharva from "../assets/Atharva-removebg-preview.png";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
@@ -10,10 +10,10 @@ const fadeInDirection = (direction, delay = 0) => {
 
   switch (direction) {
     case 'top':
-      x = -100;
+      y = -100;
       break;
     case 'bottom':
-      x = 100;
+      y = 100;
       break;
     case 'left':
       x = -100;
@@ -31,9 +31,17 @@ const fadeInDirection = (direction, delay = 0) => {
   };
 };
 
+// ServiceCard Component with click-to-rotate functionality
 const ServiceCard = ({ index, title, icon }) => {
   const directions = ['top', 'left', 'right', 'bottom'];
   const direction = directions[index % directions.length];
+
+  // State to manage card rotation on click
+  const [isRotated, setIsRotated] = useState(false);
+
+  const handleCardClick = () => {
+    setIsRotated(!isRotated); // Toggle rotation state
+  };
 
   return (
     <motion.div
@@ -41,45 +49,57 @@ const ServiceCard = ({ index, title, icon }) => {
       whileInView="show"
       viewport={{ once: false, amount: 0.5 }}  // Ensures animation triggers every time it comes into view
       variants={fadeInDirection(direction, 0.5 * index)}
-      className="w-full max-w-[300px] xs:w-[250px] lg:w-[300px] p-[1px] card-gradient rounded-[20px] shadow-card">
-      <div className="bg-gradient-to-br from-[#10102e] to-[#292d54] rounded-[20px] py-5 px-12 min-h-[200px] flex justify-evenly items-center flex-col">
+      className="w-full max-w-[300px] xs:w-[250px] lg:w-[300px] p-[1px] card-gradient rounded-[20px] shadow-card"
+      onClick={handleCardClick} // Rotate on click
+    >
+      <motion.div
+        className="bg-gradient-to-br from-[#10102e] to-[#292d54] rounded-[20px] py-5 px-12 min-h-[200px] flex justify-evenly items-center flex-col"
+        animate={{ rotateY: isRotated ? 180 : 0 }} // Animate Y-axis rotation
+        transition={{ duration: 0.6, type: "spring" }}
+      >
         <img src={icon} alt={title} className="w-16 h-16 object-contain" />
         <h3 className="text-white text-[18px] font-bold text-center">{title}</h3>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
 
+// About Component
 const About = () => {
-  return (
-    <div className="border-b border-neutral-900 pb-4">
+  return  (
+    <div id="about" className="border-b border-neutral-900 pb-4">
       <h2 className="my-20 text-center text-5xl">
         About
         <span className="text-neutral-500"> Me</span>
       </h2>
 
       <div className="flex flex-wrap">
+        {/* About Image */}
         <motion.div
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2 lg:p-8">
+          className="w-full lg:w-1/2 lg:p-8"
+        >
           <div className="flex items-center justify-center">
             <img className="w-48 h-48" src={aboutAtharva} alt="Atharva Tikale" />
           </div>
         </motion.div>
 
+        {/* About Text */}
         <motion.div
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2">
+          className="w-full lg:w-1/2"
+        >
           <div className="flex justify-center lg:justify-start">
-            <p className="my-2 max-w-xl py-6">{ABOUT_TEXT}</p>
+            <p className="my-2 max-w-xl py-6 text-xl">{ABOUT_TEXT}</p>
           </div>
         </motion.div>
       </div>
 
+      {/* Services Cards */}
       <div className="mt-20 flex flex-wrap gap-6 justify-center">
         {services.map((service, index) => (
           <ServiceCard key={service.id} title={service.title} icon={service.icon} index={index} />
