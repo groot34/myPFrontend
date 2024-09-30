@@ -145,6 +145,8 @@ const Technologies = () => {
       >
         Technologies
       </motion.h1>
+
+
       <motion.div
         whileInView={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: -100 }}
@@ -171,7 +173,7 @@ const Technologies = () => {
                 initial="initial"
                 animate="animate"
                 className="rounded-2xl border-4 border-neutral-800 p-4 cursor-pointer"
-                onClick={() => setSelectedIcon(index)}
+                onHoverStart={() => setSelectedIcon(index)}
               >
                 {icon.src ? (
                   <img className="w-16 h-16" src={icon.src} alt={icon.alt} />
