@@ -7,6 +7,9 @@ import framerMotionIcon from "../assets/framer-motion-icon.svg";
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+
   // Scroll-to-top function
   const scrollToTop = () => {
     const heroSection = document.getElementById("navbar");
@@ -70,6 +73,11 @@ const Footer = () => {
           <FaArrowUp className="w-5 h-5" />
         </button>
       )}
+
+      {/* Copyright text at the bottom with current year */}
+      <p className="text-xs text-gray-500 mt-4">
+        © {currentYear}, All Rights Reserved
+      </p>
     </div>
   );
 };

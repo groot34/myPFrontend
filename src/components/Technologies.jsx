@@ -174,6 +174,7 @@ const Technologies = () => {
                 animate="animate"
                 className="rounded-2xl border-4 border-neutral-800 p-4 cursor-pointer"
                 onHoverStart={() => setSelectedIcon(index)}
+                onClick={() => setSelectedIcon(index)}
               >
                 {icon.src ? (
                   <img className="w-16 h-16" src={icon.src} alt={icon.alt} />

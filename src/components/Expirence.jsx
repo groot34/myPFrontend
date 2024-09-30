@@ -21,7 +21,7 @@ const Expirence = () => {
                 initial={{opacity:0, x:-100}}
                 transition={{duration:1}}
                 className='w-full lg:w-1/4'>
-                    <p className='mb-2 text-lg text-neutral-400'>{expirence.year}</p>
+                    <p className='mb-2 text-lg text-white'>{expirence.year}</p>
                 </motion.div>
 
                 <motion.div 

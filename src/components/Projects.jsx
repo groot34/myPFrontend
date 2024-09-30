@@ -4,16 +4,15 @@ import { motion, useAnimation } from "framer-motion";
 
 const Projects = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false); // State to track mobile view
-  const controls = useAnimation(); // Controls for the animation
+  const [isMobile, setIsMobile] = useState(false);
+  const controls = useAnimation();
 
-  // Detect if the screen is mobile size
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust mobile width breakpoint
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Call once on mount
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -21,36 +20,32 @@ const Projects = () => {
     };
   }, []);
 
-  // Infinite scroll animation with hover effect for larger screens
   const scrollAnimation = {
     x: ["0%", "-100%"],
     transition: {
       x: {
         repeat: Infinity,
         repeatType: "loop",
-        duration: isMobile ? 15 : 20, // Faster animation on mobile
+        duration: isMobile ? 15 : 20,
         ease: "linear",
       },
     },
   };
 
-  // Effect to handle pause/resume of animation based on hover state
   useEffect(() => {
     if (isHovered) {
-      controls.stop(); // Stop scrolling when hovered
+      controls.stop();
     } else {
       const timeout = setTimeout(() => {
-        controls.start(scrollAnimation); // Resume scrolling after delay
-      }, 1000); // Delay for 1 second after mouse leaves
+        controls.start(scrollAnimation);
+      }, 1000);
 
-      return () => clearTimeout(timeout); // Clean up timeout
+      return () => clearTimeout(timeout);
     }
   }, [isHovered, controls, isMobile]);
 
-  // Duplicating the project list for seamless infinite scrolling on larger screens
-  const duplicatedProjects = [...PROJECTS, ...PROJECTS]; // Double the array for smooth looping
+  const duplicatedProjects = [...PROJECTS, ...PROJECTS];
 
-  // Redirect function to open links in a new tab
   const redirect = (url) => {
     if (url) {
       window.open(url, "_blank");
@@ -59,7 +54,6 @@ const Projects = () => {
     }
   };
 
-  // Handle click for buttons
   const handleClick = (url) => {
     redirect(url);
   };
@@ -70,56 +64,54 @@ const Projects = () => {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 0.5 }}
-        className="my-20 text-center text-5xl"
+        className="my-16 text-center text-4xl font-bold text-gray-200"
       >
         Projects
       </motion.h2>
 
       {isMobile ? (
-        // Mobile view: Display projects in columns with alternating animations
-        <div className="space-y-6">
+        <div className="space-y-4">
           {PROJECTS.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
-              className="flex flex-col items-center mb-10"
+              className="flex flex-col items-center mb-8 bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg rounded-xl p-4 hover:shadow-2xl transition-shadow duration-300"
+              whileHover={{ scale: 1.05 }}
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="mb-6 rounded-2xl w-full max-w-xs"
-                width={280} // Adjusted width for mobile
-                height={280} // Adjusted height for mobile
+                className="mb-4 rounded-xl w-full max-w-xs"
+                width={260}
+                height={260}
               />
               <div className="text-center max-w-xs">
-                <h6 className="mb-2 font-semibold">{project.title}</h6>
+                <h6 className="mb-2 text-lg font-semibold text-gray-100">{project.title}</h6>
                 <p className="mb-4 text-neutral-400">{project.description}</p>
 
-                {/* Technologies */}
                 <div className="mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900"
+                      className="mr-2 rounded bg-purple-800 px-2 py-1 text-sm font-medium text-white"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Buttons for Live Link and GitHub Repo */}
                 <div className="flex justify-center space-x-4">
                   <button
                     onClick={() => handleClick(project.liveLink)}
-                    className="cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300"
+                    className="cursor-pointer rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg"
                   >
                     Live Demo
                   </button>
                   <button
                     onClick={() => handleClick(project.githubLink)}
-                    className="cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300"
+                    className="cursor-pointer rounded bg-gray-700 px-3 py-1 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg"
                   >
                     GitHub Repo
                   </button>
@@ -129,52 +121,50 @@ const Projects = () => {
           ))}
         </div>
       ) : (
-        // Larger screens: Infinite scrolling animation
         <motion.div
-          className="flex space-x-6"
-          animate={controls} // Control the animation with Framer Motion's controls
-          onMouseEnter={() => setIsHovered(true)} // Pause when mouse enters
-          onMouseLeave={() => setIsHovered(false)} // Resume after delay when mouse leaves
+          className="flex space-x-4"
+          animate={controls}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           {duplicatedProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="min-w-[300px] lg:min-w-[400px] flex-shrink-0 mb-10"
+              className="min-w-[260px] lg:min-w-[320px] flex-shrink-0 mb-6 bg-gradient-to-br from-gray-800 to-gray-900 shadow-xl rounded-xl p-4 hover:shadow-2xl transition-shadow duration-300"
+              whileHover={{ scale: 1.05 }}
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="mb-6 rounded-2xl w-full max-w-xs"
-                width={300} // Adjusted width for larger screens
-                height={300} // Adjusted height for larger screens
+                className="mb-4 rounded-xl w-full max-w-xs"
+                width={280}
+                height={280}
               />
               <div className="ml-4 max-w-xs">
-                <h6 className="mb-2 font-semibold">{project.title}</h6>
+                <h6 className="mb-2 text-lg font-semibold text-gray-100">{project.title}</h6>
                 <p className="mb-4 text-neutral-400">{project.description}</p>
 
-                {/* Technologies */}
                 <div className="mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900"
+                      className="mr-2 rounded bg-purple-800 px-2 py-1 text-sm font-medium text-white"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Buttons for Live Link and GitHub Repo */}
                 <div className="flex space-x-4">
                   <button
                     onClick={() => handleClick(project.liveLink)}
-                    className="cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300"
+                    className="cursor-pointer rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg"
                   >
                     Live Demo
                   </button>
                   <button
                     onClick={() => handleClick(project.githubLink)}
-                    className="cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300"
+                    className="cursor-pointer rounded bg-gray-700 px-3 py-1 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg"
                   >
                     GitHub Repo
                   </button>
@@ -189,22 +179,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
