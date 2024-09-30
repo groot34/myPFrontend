@@ -26,6 +26,8 @@ import viteIcon from "../assets/vite-icon.svg";
 import figmaIcon from "../assets/figma-icon.svg"; 
 import framerMotionIcon from "../assets/framer-motion-icon.svg";
 
+
+import { SiExpress } from "react-icons/si";
 import { SiNextdotjs } from "react-icons/si";
 import { SiShadcnui } from "react-icons/si";
 import { FaNpm } from "react-icons/fa";
@@ -51,6 +53,15 @@ const iconData = [
   { src: figmaIcon, alt: "Figma ", duration: 2.7 },
   { src: gitIcon, alt: "Git ", duration: 3 },
   { src: githubIcon, alt: "GitHub ", duration: 2.6 },
+  {
+    icon: SiExpress ,
+    alt: "Express.js ",
+    duration: 1.9,
+    config: {
+      size: "4em",
+      color: "#ffffff",
+    }
+  },
   { src: htmlIcon, alt: "HTML ", duration: 2.9 },
   { src: jsIcon, alt: "JavaScript ", duration: 3.3 },
   { src: mongodbIcon, alt: "MongoDB ", duration: 2.8 },
@@ -98,7 +109,7 @@ const iconData = [
   {
     icon: IoLogoVercel ,
     alt: "Vercel ",
-    duration: 32.7,
+    duration: 2.0,
     config: {
       size: "4em",
       color: "#ffffff",

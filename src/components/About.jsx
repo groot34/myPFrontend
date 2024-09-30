@@ -49,6 +49,7 @@ const ServiceCard = ({ index, title, icon }) => {
       variants={fadeInDirection(direction)}
       className="w-full max-w-[300px] xs:w-[250px] lg:w-[300px] p-[1px] card-gradient rounded-[20px] shadow-card"
       onClick={handleCardClick} // Rotate on click
+      onHoverStart={() => setIsRotated(!isRotated)} // Rotate on hover
     >
       <motion.div
         className="bg-gradient-to-br from-[#10102e] to-[#292d54] rounded-[20px] py-5 px-12 min-h-[200px] flex justify-evenly items-center flex-col"
