@@ -10,7 +10,7 @@ import prototyping from "../assets/cards/prototyping.png";
 
 export const HERO_CONTENT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with a knack for crafting robust and scalable web applications. With 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences. Let's build something amazing together!`;
 
-export const ABOUT_TEXT = `I’m a full-stack developer with 2 years of experience building dynamic interfaces using React and Next.js, and backend solutions with Node.js and Express.js. I work with databases like MySQL, PostgreSQL, and MongoDB, and am currently diving into DevOps while sharpening my DSA skills. I’m also keen to learn GoLang soon. Outside of coding, I stay active and follow politics and geopolitics.
+export const ABOUT_TEXT = `I’m a full-stack developer with 2 years of experience building dynamic interfaces using React, React Native and Next.js, and backend solutions with Node.js and Express.js. I work with databases like MySQL, PostgreSQL, and MongoDB, and am currently diving into DevOps while sharpening my DSA skills. I’m also keen to learn GoLang soon. Outside of coding, I stay active and follow politics and geopolitics.
 
 `
 
