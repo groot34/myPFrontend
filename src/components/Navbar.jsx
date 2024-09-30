@@ -56,13 +56,13 @@ const Navbar = () => {
           <button className="absolute top-5 right-5 text-3xl" onClick={toggleMenu}>
             <FaTimes />
           </button>
-          <a href="#about" className="cursor-pointer font-bold hover:text-gray-500" onClick={toggleMenu}>
+          <a href="#about" className="cursor-pointer font-bold text-5xl mb-8 hover:text-gray-500" onClick={toggleMenu}>
             About
           </a>
-          <a href="#projects" className="cursor-pointer font-bold hover:text-gray-500" onClick={toggleMenu}>
+          <a href="#projects" className="cursor-pointer text-5xl font-bold mb-8 hover:text-gray-500" onClick={toggleMenu}>
             Projects
           </a>
-          <a href="#contact" className="cursor-pointer font-bold hover:text-gray-500" onClick={toggleMenu}>
+          <a href="#contact" className="cursor-pointer  text-5xl font-bold hover:text-gray-500" onClick={toggleMenu}>
             Contact
           </a>
         </div>

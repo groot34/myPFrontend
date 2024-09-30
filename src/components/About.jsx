@@ -4,21 +4,15 @@ import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
 import { services } from "../constants";
 
-// Motion fadeIn effect for different directions
-const fadeInDirection = (direction, delay = 0) => {
-  let x = 0, y = 0;
+// Motion fadeIn effect for alternating left to right and right to left
+const fadeInDirection = (direction) => {
+  let x = 0;
 
   switch (direction) {
-    case 'top':
-      y = -100;
-      break;
-    case 'bottom':
-      y = 100;
-      break;
-    case 'left':
+    case "left":
       x = -100;
       break;
-    case 'right':
+    case "right":
       x = 100;
       break;
     default:
@@ -26,15 +20,19 @@ const fadeInDirection = (direction, delay = 0) => {
   }
 
   return {
-    hidden: { opacity: 0, x, y },
-    show: { opacity: 1, x: 0, y: 0, transition: { type: 'spring', delay, duration: 0.75 } }
+    hidden: { opacity: 0, x },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", duration: 0.75 },
+    },
   };
 };
 
 // ServiceCard Component with click-to-rotate functionality
 const ServiceCard = ({ index, title, icon }) => {
-  const directions = ['top', 'left', 'right', 'bottom'];
-  const direction = directions[index % directions.length];
+  // Alternate direction for each card
+  const direction = index % 2 === 0 ? "left" : "right";
 
   // State to manage card rotation on click
   const [isRotated, setIsRotated] = useState(false);
@@ -47,8 +45,8 @@ const ServiceCard = ({ index, title, icon }) => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, amount: 0.5 }}  // Ensures animation triggers every time it comes into view
-      variants={fadeInDirection(direction, 0.5 * index)}
+      viewport={{ once: false, amount: 0.5 }} // Ensures animation triggers every time it comes into view
+      variants={fadeInDirection(direction)}
       className="w-full max-w-[300px] xs:w-[250px] lg:w-[300px] p-[1px] card-gradient rounded-[20px] shadow-card"
       onClick={handleCardClick} // Rotate on click
     >
@@ -66,7 +64,7 @@ const ServiceCard = ({ index, title, icon }) => {
 
 // About Component
 const About = () => {
-  return  (
+  return (
     <div id="about" className="border-b border-neutral-900 pb-4">
       <h2 className="my-20 text-center text-5xl">
         About
@@ -100,11 +98,20 @@ const About = () => {
       </div>
 
       {/* Services Cards */}
-      <div className="mt-20 flex flex-wrap gap-6 justify-center">
+      <motion.div
+        className="mt-20 flex flex-wrap gap-6 justify-center"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.5 }} // Animation when the cards come into view
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          show: { opacity: 1, y: 0, transition: { duration: 0.75, staggerChildren: 0.1 } },
+        }}
+      >
         {services.map((service, index) => (
           <ServiceCard key={service.id} title={service.title} icon={service.icon} index={index} />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

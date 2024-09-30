@@ -1,6 +1,6 @@
-import React, { useCallback } from "react";
-import Particles from "react-tsparticles";
+import React from "react";
 import { loadFull } from "tsparticles";
+import { Particles } from "react-tsparticles";
 
 // Import your SVG icons
 import reactIcon from "../assets/react-icon.svg";
@@ -27,23 +27,20 @@ import typescriptIcon from "../assets/typescript-icon.svg";
 import vercelIcon from "../assets/vercel-icon.svg";
 import vscodeIcon from "../assets/vscode-icon.svg";
 import jwtIcon from "../assets/jwt-icon.svg";
-import viteIcon from "../assets/vite-icon.svg";  
-
-
+import viteIcon from "../assets/vite-icon.svg";
 
 const ParticleBackground = () => {
-  const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
-    await loadFull(engine);
-  }, []);
-
   const iconsArray = [
     reactIcon, bootstrapIcon, canvaIcon, cppIcon, cssIcon, expressIcon,
-    firebaseIcon, viteIcon,gitIcon, githubIcon, htmlIcon, jsIcon, mongodbIcon,
+    firebaseIcon, viteIcon, gitIcon, githubIcon, htmlIcon, jsIcon, mongodbIcon,
     mysqlIcon, netlifyIcon, nextjsIcon, nodeIcon, postgresqlIcon,
     postmanIcon, reduxIcon, tailwindcssIcon, typescriptIcon, vercelIcon,
     vscodeIcon, jwtIcon
   ];
+
+  const particlesInit = async (engine) => {
+    await loadFull(engine); // Ensure all features load
+  };
 
   return (
     <Particles
@@ -52,7 +49,7 @@ const ParticleBackground = () => {
       options={{
         fullScreen: {
           enable: true,
-          zIndex: 1
+          zIndex: 0 // Set particles behind other content
         },
         detectRetina: true,
         fpsLimit: 60,
@@ -76,12 +73,12 @@ const ParticleBackground = () => {
           modes: {
             bubble: {
               distance: 400,
-              duration: 20,
+              duration: 2,
               opacity: 0.8,
               size: 2,
             },
             push: {
-              quantity: 1
+              quantity: 2
             },
             repulse: {
               distance: 200,
@@ -94,29 +91,27 @@ const ParticleBackground = () => {
             value: "#ffffff"
           },
           move: {
-            direction: "none",
             enable: true,
-            outMode: "out",
-            random: false,
             speed: 2,
-            straight: false
+            outMode: "out",
           },
           number: {
-            value: 22, // Set the number of particles to match the number of icons
             density: {
               enable: true,
               area: 800
-            }
+            },
+            limit: 25,
+            value: 20,
           },
           opacity: {
+            random: true,
+            value: 1,
             animation: {
               enable: true,
-              minimumValue: 0.2,
               speed: 1,
+              minimumValue: 0.2,
               sync: false
-            },
-            random: true,
-            value: 1
+            }
           },
           rotate: {
             animation: {
@@ -125,27 +120,21 @@ const ParticleBackground = () => {
               sync: false
             },
             direction: "random",
-            random: true,
-            value: 0
+            random: true
           },
           shape: {
-            type: "image",
+            type: "image", // Render images as particles
             image: iconsArray.map((icon) => ({
               src: icon,
-              width: 30,
-              height: 30
-            }))
+              width: 20,
+              height: 20
+            })),
           },
           size: {
-            random: false,
-            value: 15
+            value: 16
           }
         },
         background: {
-          color: {
-            value: "transparent",
-          },
-          image: "",
           position: "50% 50%",
           repeat: "no-repeat",
           size: "cover"
