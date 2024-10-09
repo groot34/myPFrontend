@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import aboutAtharva from "../assets/Atharva-removebg-preview.png";
+import aboutAtharva2 from "../assets/Atharva-removablebg-2.png";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
 import { services } from "../constants";
@@ -57,7 +58,9 @@ const ServiceCard = ({ index, title, icon }) => {
         transition={{ duration: 0.6, type: "spring" }}
       >
         <img src={icon} alt={title} className="w-16 h-16 object-contain" />
-        <h3 className="text-white text-[18px] font-bold text-center">{title}</h3>
+        <h3 className="text-white text-[18px] font-bold text-center">
+          {title}
+        </h3>
       </motion.div>
     </motion.div>
   );
@@ -81,7 +84,11 @@ const About = () => {
           className="w-full lg:w-1/2 lg:p-8"
         >
           <div className="flex items-center justify-center">
-            <img className="w-48 h-48" src={aboutAtharva} alt="Atharva Tikale" />
+            <img
+              className="w-52 h-52"
+              src={aboutAtharva2}
+              alt="Atharva Tikale"
+            />
           </div>
         </motion.div>
 
@@ -106,11 +113,20 @@ const About = () => {
         viewport={{ once: false, amount: 0.5 }} // Animation when the cards come into view
         variants={{
           hidden: { opacity: 0, y: 50 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.75, staggerChildren: 0.1 } },
+          show: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.75, staggerChildren: 0.1 },
+          },
         }}
       >
         {services.map((service, index) => (
-          <ServiceCard key={service.id} title={service.title} icon={service.icon} index={index} />
+          <ServiceCard
+            key={service.id}
+            title={service.title}
+            icon={service.icon}
+            index={index}
+          />
         ))}
       </motion.div>
     </div>
