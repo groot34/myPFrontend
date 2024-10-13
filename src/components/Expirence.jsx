@@ -9,7 +9,7 @@ const Expirence = () => {
     whileInView={{opacity:1, y:0}}
     initial={{opacity:0, y:-100}}       
     transition={{duration:0.5}} 
-    className='my-20 text-center text-5xl'>Experience</motion.h2>
+    className='my-20 text-center font-semibold text-5xl'>cd ~/Experience</motion.h2>
     <div>
         {EXPERIENCES.map((expirence, index)=>(
             <div

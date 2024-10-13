@@ -64,9 +64,9 @@ const Projects = () => {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 0.5 }}
-        className="my-16 text-center text-4xl font-bold text-gray-200"
+        className="my-16 text-center text-5xl font-semibold text-gray-200"
       >
-        Projects
+        cd ~/Projects
       </motion.h2>
 
       {isMobile ? (
@@ -77,7 +77,7 @@ const Projects = () => {
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
-              className="flex flex-col items-center mb-8 bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg rounded-xl p-4 hover:shadow-2xl transition-shadow duration-300"
+              className="flex flex-col items-center mb-8 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-shadow duration-300"
               whileHover={{ scale: 1.05 }}
             >
               <img
@@ -130,7 +130,7 @@ const Projects = () => {
           {duplicatedProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="min-w-[260px] lg:min-w-[320px] flex-shrink-0 mb-6 bg-gradient-to-br from-gray-800 to-gray-900 shadow-xl rounded-xl p-4 hover:shadow-2xl transition-shadow duration-300"
+              className="min-w-[260px] lg:min-w-[320px] bg-white/0 flex-shrink-0 mb-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-shadow duration-300"
               whileHover={{ scale: 1.05 }}
             >
               <img
