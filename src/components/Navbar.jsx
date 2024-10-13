@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import logo from "../assets/Letter A.svg";
+import { motion, useAnimation } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +23,19 @@ const Navbar = () => {
   return (
     <nav id="navbar" className="mb-20 flex items-center justify-between py-6">
       <div className="flex items-center">
-        <img
-          className="mx-2 w-20 cursor-pointer"
-          src={logo}
-          alt="logo"
-          onClick={() => window.location.reload()}
-        />
+      <motion.img
+  className="mx-2 w-20 cursor-pointer"
+  src={logo}
+  alt="logo"
+  onClick={() => window.location.reload()}
+  animate={{ rotateY: 360 }}  
+  transition={{ 
+    repeat: Infinity,         
+    duration: 2,              
+    ease: "linear"            
+  }}
+/>
+
       </div>
 
       <div className="hidden md:flex items-center gap-8 text-3xl">

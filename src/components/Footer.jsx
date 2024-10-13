@@ -56,10 +56,16 @@ const Footer = () => {
           }}
         />
         and
-        <img
+        <motion.img
           src={framerMotionIcon}
           alt="Framer Motion"
           className="w-6 h-6 inline-block mx-2 align-middle"
+          animate={{ rotateY: 360 }} // Infinite rotation along Y-axis
+          transition={{
+            repeat: Infinity,
+            duration: 2, 
+            ease: "linear",
+          }}
         />
       </p>
 
