@@ -29,7 +29,7 @@ const Hero = () => {
               className="pb-16 text-5xl font-thin tracking-tight lg:mt-16 lg:text-8xl"
             >
               <span className="font-semibold">H</span>ola{" "}
-              <span className="text-[#FFFDD0] font-semibold">C</span>omrades🫡
+              <span className="text-[#FFFDD0] font-semibold">C</span>omrade🫡
             </motion.h1>
 
             {/* Fancy styled span */}
