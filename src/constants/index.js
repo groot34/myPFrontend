@@ -10,7 +10,16 @@ import prototyping from "../assets/cards/prototyping.png";
 
 export const HERO_CONTENT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with a knack for crafting robust and scalable web applications. With 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences. Let's build something amazing together!`;
 
-export const ABOUT_TEXT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with 2 years of experience building dynamic user interfaces using React, React Native, and Next.js. On the backend, I work with Node.js and Express.js, integrating databases like MySQL, PostgreSQL, and MongoDB. Currently, I am exploring DevOps while honing my skills in DSA and CP. I’m also eager to learn GoLang soon. Outside of coding, I stay active and enjoy following politics and geopolitics.`
+export const ABOUT_TEXT = `
+  I am a pre-final year student at <a href="https://iiitm.ac.in/index.php/en/" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: underline;">IIIT Gwalior</a>, pursuing computer science. I previously studied at Agragami High School. 
+  As a passionate full-stack web developer based in India, I have 2 years of experience in creating dynamic UIs with React, React Native, and Next.js. I also work on the backend using Node.js and Express.js, integrating databases like MySQL, PostgreSQL, and MongoDB. 
+  Currently, I'm exploring DevOps and honing my skills in DSA and CP. I'm eager to learn GoLang soon. Outside coding, I stay active and enjoy following politics and geopolitics.
+`;
+
+
+
+
+
 
 export const EXPERIENCES = [
   {
@@ -37,7 +46,7 @@ export const PROJECTS = [
     title: "RepoLoop",
     image: project1,
     description:
-      "Developed an app using the MERN stack and GitHub API to fetch user profiles and repositories, enhancing scalability by 30%. Integrated Passport.js for authentication, supporting 3000 users. Used Tailwind CSS for a responsive UI, boosting engagement by 40%.",
+      "A powerful app for discovering GitHub user profiles and repositories, offering a seamless browsing experience with intuitive design and secure login features to personalize the journey.",
     technologies: ["ReactJs", "NodeJs", "MongoDB", "PassportJs"],
     liveLink: "https://project-mern-github.onrender.com/",
     githubLink: "https://github.com/groot34/project_mern_repoloop"
@@ -46,7 +55,7 @@ export const PROJECTS = [
     title: "Meetx",
     image: project2,
     description:
-      "Built a video conferencing app supporting 600+ rooms and 50 concurrent users using Stream SDK. Used Next.js SSR for better performance and SEO. Integrated Clerk for user authentication, handling 10,000 active users.",
+      "An efficient video conferencing platform supporting multiple rooms and real-time interactions, enabling smooth connections for users in various environments, with high performance and user-friendly features.",
     technologies: ["ReactJs", "NextJs", "TypeScript", "Clerk"],
     liveLink: "https://meetx.vercel.app/",
     githubLink: "https://github.com/groot34/project_mern_meetx"
@@ -55,24 +64,23 @@ export const PROJECTS = [
     title: "5ocial",
     image: project3,
     description:
-      "Developed a social media app with messaging, communities, and notifications using MongoDB and Uploadthing. SSR with Next.js improved SEO, while Tailwind CSS created a responsive UI, increasing engagement by 30%.",
+      "An engaging social media app allowing users to connect, message, form communities, and receive notifications in real time, all in a sleek, responsive interface that enhances user engagement.",
     technologies: ["NextJs", "UploadThing", "MongoDB", "Clerk"],
     liveLink: "https://5ocial.vercel.app/",
     githubLink: "https://github.com/groot34/5ocial"
   },
   {
-    title: "Portfolio Website",
+    title: "Atharvxfolio",
     image: project4,
     description:
-      "A personal portfolio showcasing projects and skills, built with React and Tailwind CSS, featuring smooth animations with Framer Motion.",
+      "A personal portfolio showcasing projects and skills in a modern, animated design. Smooth transitions and a visually pleasing layout bring each project to life, making it easy to navigate and explore.",
     technologies: ["React", "Tailwindcss", "Framer Motion"],
     liveLink: "https://atharvx.vercel.app/",
     githubLink: "https://github.com/groot34/myPFrontend"
   }
-  
-  
-
 ];
+
+
 
 export const services = [
   {

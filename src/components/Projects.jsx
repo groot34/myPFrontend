@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { PROJECTS } from "../constants";
 import { motion, useAnimation } from "framer-motion";
 
-const ProjectCard = ({ project, handleClick }) => {
+const ProjectCard = ({ project, handleClick, isMobile }) => {
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return;
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -23,6 +23,52 @@ const ProjectCard = ({ project, handleClick }) => {
     if (!cardRef.current) return;
     cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   };
+
+  if (isMobile) {
+    return (
+      <div className="w-[230px] min-h-[650px] bg-white/0 flex-shrink-0 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-all duration-300">
+        <div className="flex flex-col h-full">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-48 object-cover rounded-xl mb-4"
+            width={280}
+            height={192}
+          />
+          <div className="flex-grow">
+            <h6 className="mb-3 text-xl font-semibold text-gray-100">{project.title}</h6>
+            <p className="mb-6 text-neutral-400 text-base leading-relaxed">{project.description}</p>
+
+            <div className="mb-6">
+              {project.technologies.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="mr-2 mb-2 inline-block rounded bg-purple-800 px-3 py-1.5 text-sm font-medium text-white"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-col space-y-3">
+              <button
+                onClick={() => handleClick(project.liveLink)}
+                className="w-full cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg"
+              >
+                Live Demo
+              </button>
+              <button
+                onClick={() => handleClick(project.githubLink)}
+                className="w-full cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg"
+              >
+                GitHub Repo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -102,7 +148,7 @@ const Projects = () => {
       x: {
         repeat: Infinity,
         repeatType: "loop",
-        duration: isMobile ? 15 : 20,
+        duration: isMobile ? 20 : 15, // Faster for desktop
         ease: "linear",
       },
     },
@@ -142,18 +188,23 @@ const Projects = () => {
       </motion.h2>
 
       {isMobile ? (
-        <div className="space-y-4">
-          {PROJECTS.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              className="flex flex-col items-center mb-8"
-            >
-              <ProjectCard project={project} handleClick={handleClick} />
-            </motion.div>
-          ))}
+        <div className="overflow-hidden">
+          <motion.div
+            ref={containerRef}
+            className="flex space-x-4"
+            animate={controls}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {duplicatedProjects.map((project, index) => (
+              <ProjectCard 
+                key={index} 
+                project={project} 
+                handleClick={handleClick}
+                isMobile={true}
+              />
+            ))}
+          </motion.div>
         </div>
       ) : (
         <div className="overflow-hidden">
@@ -165,7 +216,12 @@ const Projects = () => {
             onMouseLeave={() => setIsHovered(false)}
           >
             {duplicatedProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} handleClick={handleClick} />
+              <ProjectCard 
+                key={index} 
+                project={project} 
+                handleClick={handleClick}
+                isMobile={false}
+              />
             ))}
           </motion.div>
         </div>
