@@ -32,7 +32,7 @@ const Hero = () => {
               <span className="text-[#FFFDD0] font-semibold">C</span>omrade🫡
             </motion.h1>
 
-            {/* Fancy styled span */}
+      
             <motion.span
               variants={container(0.5)}
               initial="hidden"
@@ -42,7 +42,7 @@ const Hero = () => {
               I'm <span className="italic">Atharva Tikale</span>
             </motion.span>
 
-            {/* Typing effect */}
+         
             <motion.p
               variants={container(1)}
               initial="hidden"
