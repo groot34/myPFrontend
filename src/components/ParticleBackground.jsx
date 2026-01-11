@@ -28,6 +28,9 @@ import vercelIcon from "../assets/vercel-icon.svg";
 import vscodeIcon from "../assets/vscode-icon.svg";
 import jwtIcon from "../assets/jwt-icon.svg";
 import viteIcon from "../assets/vite-icon.svg";
+import goIcon from "../assets/go.svg";
+import neonIcon from "../assets/neonIcon.svg";
+import supabaseIcon from "../assets/supabaseIcon.svg";
 
 const ParticleBackground = () => {
   const iconsArray = [
@@ -35,7 +38,7 @@ const ParticleBackground = () => {
     firebaseIcon, viteIcon, gitIcon, githubIcon, htmlIcon, jsIcon, mongodbIcon,
     mysqlIcon, netlifyIcon, nextjsIcon, nodeIcon, postgresqlIcon,
     postmanIcon, reduxIcon, tailwindcssIcon, typescriptIcon, vercelIcon,
-    vscodeIcon, jwtIcon
+    vscodeIcon, jwtIcon, goIcon, neonIcon, supabaseIcon
   ];
 
   const particlesInit = async (engine) => {

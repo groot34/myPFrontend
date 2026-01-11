@@ -1,9 +1,8 @@
-import React from 'react';
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
 
 const TypingEffect = () => {
   const [text] = useTypewriter({
-    words: ['<Full stack developer/>', '<Android developer/>', '<Reader/>', '<Geopolitical Enthusiast/>', '<Programmer/>', '<UI/UX Designer/>'],
+    words: ['<Full stack developer/>', '<Android developer/>', '<Reader/>', '<Geopolitical Enthusiast/>', '<Programmer/>', '<UI/UX Designer/>', '<Music ❤️/>'],
     loop: true,
     typeSpeed: 100,
     deleteSpeed: 50,

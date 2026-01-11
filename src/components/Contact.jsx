@@ -32,7 +32,10 @@ const Contact = () => {
     }
 
     try {
-      const url = "/api/send-email";
+      // const url = "/api/send-email";
+       const url = `${import.meta.env.VITE_BACKEND}/send-email`;
+      // const url = `https://mypfbackend.onrender.com/send-email`;
+
       const response = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,8 @@ import project1 from "../assets/projects/project-1.png";
 import project2 from "../assets/projects/project-2.png";
 import project3 from "../assets/projects/project-3.png";
 import project4 from "../assets/projects/project-4.png";
+import project5 from "../assets/projects/project-5.jpg";
+import project6 from "../assets/projects/project-6.png";
 
 import frontend from "../assets/cards/frontend.png";
 import backend from "../assets/cards/backend.png";
@@ -10,21 +12,33 @@ import prototyping from "../assets/cards/prototyping.png";
 
 import stakesmenIcon from "../assets/stakesmen.jpg";
 import ecellIcon from "../assets/ecell.jpg";
+import bitByBitStudio from "../assets/bitByBitStudio.png";
 
 export const HERO_CONTENT = `I am a pre-final year student at IIIT Gwalior and a passionate full-stack web developer based in India, with a knack for crafting robust and scalable web applications. With 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences. Let's build something amazing together!`;
 
 export const ABOUT_TEXT = `
-  I am a pre-final year student at <a href="https://iiitm.ac.in/index.php/en/" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: underline;">IIIT Gwalior</a>, pursuing computer science. I previously studied at Agragami High School. 
-  As a passionate full-stack web developer based in India, I have 2 years of experience in creating dynamic UIs with React, React Native, and Next.js. I also work on the backend using Node.js and Express.js, integrating databases like MySQL, PostgreSQL, and MongoDB. 
-  Currently, I'm exploring DevOps and honing my skills in DSA and CP. I'm eager to learn GoLang soon. Outside coding, I stay active and enjoy following politics and geopolitics.
+  I am a final-year computer science student at <a href="https://iiitm.ac.in/index.php/en/" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: underline;">IIIT Gwalior</a>. 
+  I’m a full-stack developer with 2 years of experience building dynamic UIs using React, React Native, and Next.js, and backend systems with Node.js, Express.js, and databases like MySQL, PostgreSQL, and MongoDB. 
+  I have recently learned Go and am now focused on scalable backend development, microservices, and system design. I also actively practice DSA and competitive programming, and enjoy following politics and geopolitics.
 `;
 
 export const EXPERIENCES = [
   {
+    title: "Full Stack Developer",
+    company_name: "Bit By Bit Studio",
+    icon: bitByBitStudio,
+    iconBg: "#383E56",
+    date: "May 2025 - July 2025",
+    points: [
+      "Developed and deployed a scalable web platform for dantsri.com using React, SCSS and Supabase.",
+      "Improved UX, performance, and SEO through responsive design and structured audits.",
+    ],
+  },
+  {
     title: "React, React-Native Developer",
     company_name: "Stakesmen",
-    icon: stakesmenIcon, // Replace with the actual icon for Stakesmen if available
-    iconBg: "#383E56", // You can set the background color to match the rest of your theme
+    icon: stakesmenIcon,
+    iconBg: "#383E56",
     date: "June 2024 - July 2024",
     points: [
       "Collaborated with Web and Automation teams to optimize processes, enhance performance, and upscale the application using React and React Native.",
@@ -34,8 +48,8 @@ export const EXPERIENCES = [
   {
     title: "Content Member",
     company_name: "ECell, IIIT Gwalior",
-    icon: ecellIcon, // Replace with the actual icon for ECell if available
-    iconBg: "#383E56", // You can adjust this as needed
+    icon: ecellIcon,
+    iconBg: "#383E56",
     date: "Feb 2023 - Oct 2023",
     points: [
       "Collaborated with the content department at ECell, writing blogs on various topics.",
@@ -80,6 +94,24 @@ export const PROJECTS = [
     technologies: ["React", "Tailwindcss", "Framer Motion"],
     liveLink: "https://atharvx.vercel.app/",
     githubLink: "https://github.com/groot34/myPFrontend",
+  },
+  {
+    title: "Dynamic Malware Analysis",
+    image: project5,
+    description:
+      "A powerful app for discovering GitHub user profiles and repositories, offering a seamless browsing experience with intuitive design and secure login features to personalize the journey.",
+    technologies: ["Windows", "ProcMon", "Proc Explorer", "Oracle VM"],
+    liveLink: "",
+    githubLink: "https://github.com/groot34/MA",
+  },
+  {
+    title: "tknote",
+    image: project6,
+description:
+  "A terminal-based note-taking application built in Go, offering a fast, distraction-free writing experience with an interactive TUI, file management, search, and safe delete confirmations.",
+technologies: ["Go", "Bubble Tea", "Lipgloss"],
+    liveLink: "",
+    githubLink: "https://github.com/groot34/tknote",
   },
 ];
 

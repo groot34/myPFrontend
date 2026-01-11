@@ -25,6 +25,9 @@ import jwtIcon from "../assets/jwt-icon.svg";
 import viteIcon from "../assets/vite-icon.svg"; 
 import figmaIcon from "../assets/figma-icon.svg"; 
 import framerMotionIcon from "../assets/framer-motion-icon.svg";
+import goIcon from "../assets/go.svg";
+import neonIcon from "../assets/neonIcon.svg";
+import supabaseIcon from "../assets/supabaseIcon.svg";
 
 
 import { SiExpress } from "react-icons/si";
@@ -106,6 +109,7 @@ const iconData = [
       color: "#d63031",
     }
   },
+  { src: supabaseIcon, alt: "Supabase ", duration: 2.5 },
   {
     icon: IoLogoVercel ,
     alt: "Vercel ",
@@ -115,6 +119,8 @@ const iconData = [
       color: "#ffffff",
     }
   },
+  { src: goIcon, alt: "Go ", duration: 2.5 },
+    { src: neonIcon, alt: "Neon ", duration: 2.5 },
 ];
 
 const iconVariants = (duration) => ({
