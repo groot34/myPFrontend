@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
   font-family: "Inter", sans-serif,
 }
 
@@ -12,3 +12,19 @@ html {
   scroll-behavior: smooth;
 }
 
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

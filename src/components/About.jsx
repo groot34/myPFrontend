@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import aboutAtharva from "../assets/Atharva-removebg-preview.png";
 import aboutAtharva2 from "../assets/Atharva-removablebg-2.png";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";

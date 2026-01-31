@@ -28,6 +28,9 @@ import framerMotionIcon from "../assets/framer-motion-icon.svg";
 import goIcon from "../assets/go.svg";
 import neonIcon from "../assets/neonIcon.svg";
 import supabaseIcon from "../assets/supabaseIcon.svg";
+import dockerIcon from "../assets/docker-icon.svg";
+import prismaIcon from "../assets/prisma-icon.svg";
+import nestjsIcon from "../assets/nestjs-icon.svg";
 
 
 import { SiExpress } from "react-icons/si";
@@ -39,7 +42,6 @@ import { SiRender } from "react-icons/si";
 
 const iconData = [
   { src: reactIcon, alt: "React ", duration: 2.5 },
-  { src: bootstrapIcon, alt: "Bootstrap ", duration: 3 },
   { src: canvaIcon, alt: "Canva ", duration: 2.8 },
   { src: cppIcon, alt: "C++ ", duration: 3.2 },
   {
@@ -81,6 +83,7 @@ const iconData = [
   { src: mysqlIcon, alt: "MySQL ", duration: 3.2 },
   { src: netlifyIcon, alt: "Netlify ", duration: 2.7 },
   { src: nodeIcon, alt: "Node.js ", duration: 3.1 },
+  { src: dockerIcon, alt: "Docker ", duration: 3.1 },
   { src: postgresqlIcon, alt: "PostgreSQL ", duration: 2.8 },
   { src: postmanIcon, alt: "Postman ", duration: 3.3 },
   { src: reduxIcon, alt: "Redux ", duration: 2.6 },
@@ -98,17 +101,8 @@ const iconData = [
       color: "#ffffff",
     }
   },
-
-
-  {
-    icon: FaNpm,
-    alt: "NPM ",
-    duration: 3.1,
-    config: {
-      size: "4em",
-      color: "#d63031",
-    }
-  },
+    { src: prismaIcon, alt: "Prisma ", duration: 3.1 },
+  { src: nestjsIcon, alt: "NestJS ", duration: 3.1 },
   { src: supabaseIcon, alt: "Supabase ", duration: 2.5 },
   {
     icon: IoLogoVercel ,

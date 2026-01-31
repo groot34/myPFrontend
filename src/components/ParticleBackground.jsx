@@ -4,15 +4,12 @@ import { Particles } from "react-tsparticles";
 
 // Import your SVG icons
 import reactIcon from "../assets/react-icon.svg";
-import bootstrapIcon from "../assets/bootstrap-icon.svg";
 import canvaIcon from "../assets/canva-icon.svg";
 import cppIcon from "../assets/cpp-icon.svg";
-import cssIcon from "../assets/css-icon.svg";
 import expressIcon from "../assets/express-icon.svg";
 import firebaseIcon from "../assets/firebase-icon.svg";
 import gitIcon from "../assets/git-icon.svg";
 import githubIcon from "../assets/github-icon.svg";
-import htmlIcon from "../assets/html-icon.svg";
 import jsIcon from "../assets/js-icon.svg";
 import mongodbIcon from "../assets/mongodb-icon.svg";
 import mysqlIcon from "../assets/mysql-icon.svg";
@@ -31,14 +28,17 @@ import viteIcon from "../assets/vite-icon.svg";
 import goIcon from "../assets/go.svg";
 import neonIcon from "../assets/neonIcon.svg";
 import supabaseIcon from "../assets/supabaseIcon.svg";
+import dockerIcon from "../assets/docker-icon.svg";
+import prismaIcon from "../assets/prisma-icon.svg";
+import nestjsIcon from "../assets/nestjs-icon.svg";
 
 const ParticleBackground = () => {
   const iconsArray = [
-    reactIcon, bootstrapIcon, canvaIcon, cppIcon, cssIcon, expressIcon,
-    firebaseIcon, viteIcon, gitIcon, githubIcon, htmlIcon, jsIcon, mongodbIcon,
+    reactIcon, cppIcon, expressIcon,
+    firebaseIcon, viteIcon, gitIcon, githubIcon, jsIcon, mongodbIcon,
     mysqlIcon, netlifyIcon, nextjsIcon, nodeIcon, postgresqlIcon,
     postmanIcon, reduxIcon, tailwindcssIcon, typescriptIcon, vercelIcon,
-    vscodeIcon, jwtIcon, goIcon, neonIcon, supabaseIcon
+    vscodeIcon, jwtIcon, goIcon, neonIcon, supabaseIcon, dockerIcon, prismaIcon, nestjsIcon
   ];
 
   const particlesInit = async (engine) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PROJECTS } from "../constants";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 const ProjectCard = ({ project, handleClick, isMobile }) => {
   const cardRef = useRef(null);
@@ -27,14 +27,14 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
 
   if (isMobile) {
     return (
-      <div className="w-[230px] min-h-[650px] bg-white/0 flex-shrink-0 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-all duration-300">
+      <div className="w-[200px] min-h-[450px] bg-white/0 flex-shrink-0 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-all duration-300">
         <div className="flex flex-col h-full">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-48 object-cover rounded-xl mb-4"
-            width={280}
-            height={192}
+            className="w-full h-40 object-cover rounded-xl mb-4"
+            width={250}
+            height={160}
           />
           <div className="flex-grow">
             <h6 className="mb-3 text-xl font-semibold text-gray-100">
@@ -48,7 +48,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
               {project.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="mr-2 mb-2 inline-block rounded bg-purple-800 px-3 py-1.5 text-sm font-medium text-white"
+                  className="mr-2 mb-2 inline-block rounded bg-purple-800 px-2 py-1 text-sm font-medium text-white"
                 >
                   {tech}
                 </span>
@@ -58,13 +58,13 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
             <div className="flex flex-col space-y-3">
               <button
                 onClick={() => handleClick(project.liveLink)}
-                className="w-full cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg"
+                className="w-full cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg text-sm"
               >
                 Live Demo
               </button>
               <button
                 onClick={() => handleClick(project.githubLink)}
-                className="w-full cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg"
+                className="w-full cursor-pointer rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg text-sm"
               >
                 GitHub Repo
               </button>
@@ -78,7 +78,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
   return (
     <div
       ref={cardRef}
-      className="min-w-[260px] lg:min-w-[320px] bg-white/0 flex-shrink-0 mb-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-all duration-300"
+      className="min-w-[230px] lg:min-w-[280px] bg-white/0 flex-shrink-0 mb-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[5px] border border-white/10 rounded-lg p-4 hover:shadow-2xl transition-all duration-300"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transition: "transform 0.1s ease-out" }}
@@ -87,14 +87,14 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
         src={project.image}
         alt={project.title}
         className="mb-4 rounded-xl w-full max-w-xs"
-        width={280}
-        height={280}
+        width={250}
+        height={250}
       />
       <div className="ml-4 max-w-xs">
-        <h6 className="mb-2 text-lg font-semibold text-gray-100">
+        <h6 className="mb-2 text-xl font-semibold text-gray-100">
           {project.title}
         </h6>
-        <p className="mb-4 text-neutral-400">{project.description}</p>
+        <p className="mb-4 text-neutral-400 text-base">{project.description}</p>
 
         <div className="mb-4 flex flex-wrap gap-2">
           {project.technologies.map((tech, techIndex) => (
@@ -111,7 +111,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
           {project?.liveLink && project.liveLink.trim() !== "" && (
             <button
               onClick={() => handleClick(project.liveLink)}
-              className="cursor-pointer rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg"
+              className="cursor-pointer rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg text-sm"
             >
               Live Demo
             </button>
@@ -119,7 +119,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
 
           <button
             onClick={() => handleClick(project.githubLink)}
-            className="cursor-pointer rounded bg-gray-700 px-3 py-1 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg"
+            className="cursor-pointer rounded bg-gray-700 px-3 py-1 text-white hover:bg-gray-800 transition duration-300 shadow-md hover:shadow-lg text-sm"
           >
             GitHub Repo
           </button>
@@ -130,47 +130,31 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
 };
 
 const Projects = () => {
-  const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const controls = useAnimation();
   const containerRef = useRef(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
       if (containerRef.current) {
-        setContainerWidth(containerRef.current.scrollWidth / 2);
+        // Calculate total width of one set of items (half the total scrollWidth since we duplicate)
+        const totalWidth = containerRef.current.scrollWidth / 2;
+        const speed = 75; // pixels per second - INCREASED SPEED slightly
+        setDuration(totalWidth / speed);
       }
     };
 
-    handleResize();
+    // Initial calculation needs a small delay to ensure rendering is complete
+    const timer = setTimeout(handleResize, 100);
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
     };
   }, []);
-
-  const scrollAnimation = {
-    x: [-containerWidth, 0],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: isMobile ? 20 : 15, // Faster for desktop
-        ease: "linear",
-      },
-    },
-  };
-
-  useEffect(() => {
-    if (isHovered) {
-      controls.stop();
-    } else {
-      controls.start(scrollAnimation);
-    }
-  }, [isHovered, controls, containerWidth, isMobile]);
 
   const duplicatedProjects = [...PROJECTS, ...PROJECTS];
 
@@ -200,45 +184,29 @@ const Projects = () => {
         cd ~/Projects
       </motion.h2>
 
-      {isMobile ? (
-        <div className="overflow-hidden">
-          <motion.div
-            ref={containerRef}
-            className="flex space-x-4"
-            animate={controls}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            {duplicatedProjects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                handleClick={handleClick}
-                isMobile={true}
-              />
-            ))}
-          </motion.div>
+      <div className="overflow-hidden w-full">
+        {/* We use a single container div for the marquee. 
+            hover:pause is handled by utility or arbitrary class. 
+            If tailwind config doesn't have 'pause', we use arbitrary.
+        */}
+        <div
+          ref={containerRef}
+          className="flex space-x-4 animate-marquee hover:[animation-play-state:paused]"
+          style={{
+            animationDuration: `${duration}s`,
+            width: "max-content" // Ensure the div takes up full width of children
+          }}
+        >
+          {duplicatedProjects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              project={project}
+              handleClick={handleClick}
+              isMobile={isMobile}
+            />
+          ))}
         </div>
-      ) : (
-        <div className="overflow-hidden">
-          <motion.div
-            ref={containerRef}
-            className="flex space-x-4"
-            animate={controls}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            {duplicatedProjects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                handleClick={handleClick}
-                isMobile={false}
-              />
-            ))}
-          </motion.div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

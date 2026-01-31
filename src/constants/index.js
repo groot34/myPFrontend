@@ -4,6 +4,10 @@ import project3 from "../assets/projects/project-3.png";
 import project4 from "../assets/projects/project-4.png";
 import project5 from "../assets/projects/project-5.jpg";
 import project6 from "../assets/projects/project-6.png";
+import project7 from "../assets/projects/project-7.png";
+import project8 from "../assets/projects/project-8.png";
+import project9 from "../assets/projects/project-9.png";
+import project10 from "../assets/projects/project-10.png";
 
 import frontend from "../assets/cards/frontend.png";
 import backend from "../assets/cards/backend.png";
@@ -113,6 +117,42 @@ technologies: ["Go", "Bubble Tea", "Lipgloss"],
     liveLink: "",
     githubLink: "https://github.com/groot34/tknote",
   },
+  {
+  title: "ScrapHire",
+  image: project7,
+  description:
+    "An automated job aggregation platform that collects, deduplicates, and analyses listings from multiple sources, featuring skill extraction, fast search, and a responsive full-stack web interface.",
+  technologies: ["Next.js", "Go", "Node.js", "MongoDB"],
+  liveLink: "https://scraphire.vercel.app",
+  githubLink: "https://github.com/groot34/job-aggregator",
+  },
+    {
+  title: "FinBoard",
+  image: project8,
+  description:
+    "A customisable real-time finance dashboard that lets users build personalised monitoring layouts using live financial APIs, interactive widgets, charts, and persistent local state.",
+  technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Zustand"],
+  liveLink: "https://finboard-henna-one.vercel.app",
+  githubLink: "https://github.com/groot34/FinBoard",
+  },
+    {
+  title: "NewsIQ",
+  image: project9,
+  description:
+    "An AI-powered newsletter generation platform that aggregates RSS feeds, summarises articles, and produces structured, brand-aware newsletters through a modern dashboard and streaming workflows.",
+  technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Vercel AI SDK"],
+  liveLink: "https://newsiq.vercel.app",
+  githubLink: "https://github.com/groot34/NewsIQ",
+  },
+    {
+  title: "Mini CRM Backend",
+  image: project10,
+  description:
+    "A production-ready CRM backend built with NestJS, providing secure user management, customer and task workflows, and role-based access control using JWT authentication.",
+  technologies: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "JWT"],
+  liveLink: "https://mini-crm-backend-mz35.onrender.com/api",
+  githubLink: "https://github.com/groot34/mini-crm-backend",
+}
 ];
 
 export const services = [
