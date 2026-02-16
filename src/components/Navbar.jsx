@@ -23,18 +23,18 @@ const Navbar = () => {
   return (
     <nav id="navbar" className="mb-20 flex items-center justify-between py-6">
       <div className="flex items-center">
-      <motion.img
-  className="mx-2 w-20 cursor-pointer"
-  src={logo}
-  alt="logo"
-  onClick={() => window.location.reload()}
-  animate={{ rotateY: 360 }}  
-  transition={{ 
-    repeat: Infinity,         
-    duration: 2,              
-    ease: "linear"            
-  }}
-/>
+        <motion.img
+          className="mx-2 w-20 cursor-pointer"
+          src={logo}
+          alt="logo"
+          onClick={() => window.location.reload()}
+          animate={{ rotateY: 360 }}
+          transition={{
+            repeat: Infinity,
+            duration: 2,
+            ease: "linear"
+          }}
+        />
 
       </div>
 

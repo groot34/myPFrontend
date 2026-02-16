@@ -22,8 +22,8 @@ import tailwindcssIcon from "../assets/tailwindcss-icon.svg";
 import typescriptIcon from "../assets/typescript-icon.svg";
 import vscodeIcon from "../assets/vscode-icon.svg";
 import jwtIcon from "../assets/jwt-icon.svg";
-import viteIcon from "../assets/vite-icon.svg"; 
-import figmaIcon from "../assets/figma-icon.svg"; 
+import viteIcon from "../assets/vite-icon.svg";
+import figmaIcon from "../assets/figma-icon.svg";
 import framerMotionIcon from "../assets/framer-motion-icon.svg";
 import goIcon from "../assets/go.svg";
 import neonIcon from "../assets/neonIcon.svg";
@@ -45,7 +45,7 @@ const iconData = [
   { src: canvaIcon, alt: "Canva ", duration: 2.8 },
   { src: cppIcon, alt: "C++ ", duration: 3.2 },
   {
-    icon: SiRender ,
+    icon: SiRender,
     alt: "Render ",
     duration: 3.0,
     config: {
@@ -59,7 +59,7 @@ const iconData = [
   { src: gitIcon, alt: "Git ", duration: 3 },
   { src: githubIcon, alt: "GitHub ", duration: 2.6 },
   {
-    icon: SiExpress ,
+    icon: SiExpress,
     alt: "Express.js ",
     duration: 1.9,
     config: {
@@ -101,11 +101,11 @@ const iconData = [
       color: "#ffffff",
     }
   },
-    { src: prismaIcon, alt: "Prisma ", duration: 3.1 },
+  { src: prismaIcon, alt: "Prisma ", duration: 3.1 },
   { src: nestjsIcon, alt: "NestJS ", duration: 3.1 },
   { src: supabaseIcon, alt: "Supabase ", duration: 2.5 },
   {
-    icon: IoLogoVercel ,
+    icon: IoLogoVercel,
     alt: "Vercel ",
     duration: 2.0,
     config: {
@@ -114,7 +114,7 @@ const iconData = [
     }
   },
   { src: goIcon, alt: "Go ", duration: 2.5 },
-    { src: neonIcon, alt: "Neon ", duration: 2.5 },
+  { src: neonIcon, alt: "Neon ", duration: 2.5 },
 ];
 
 const iconVariants = (duration) => ({

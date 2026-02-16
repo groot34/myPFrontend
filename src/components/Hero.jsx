@@ -29,7 +29,7 @@ const Hero = () => {
               className="pb-16 text-5xl font-thin tracking-tight lg:mt-16 lg:text-8xl"
             >
               <span className="font-semibold">H</span>ola{" "}
-              <span className="text-[#FFFDD0] font-semibold">C</span>omrade🫡
+              <span className="text-[#FFFDD0] font-semibold">F</span>olks🫡
             </motion.h1>
 
             <motion.span
@@ -56,15 +56,15 @@ const Hero = () => {
           <motion.img
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }} 
+            viewport={{ once: true }}
             animate={{
-              y: [0, -10, 0], 
+              y: [0, -10, 0],
             }}
             transition={{
-              duration: 1, 
-              delay: 0.2, 
+              duration: 1,
+              delay: 0.2,
               y: {
-                duration: 2, 
+                duration: 2,
                 repeat: Infinity,
                 repeatType: "loop",
               },

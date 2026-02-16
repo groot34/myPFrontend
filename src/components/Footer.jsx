@@ -63,7 +63,7 @@ const Footer = () => {
           animate={{ rotateY: 360 }} // Infinite rotation along Y-axis
           transition={{
             repeat: Infinity,
-            duration: 2, 
+            duration: 2,
             ease: "linear",
           }}
         />

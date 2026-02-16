@@ -33,7 +33,7 @@ const Contact = () => {
 
     try {
       // const url = "/api/send-email";
-       const url = `${import.meta.env.VITE_BACKEND}/send-email`;
+      const url = `${import.meta.env.VITE_BACKEND}/send-email`;
       // const url = `https://mypfbackend.onrender.com/send-email`;
 
       const response = await axios.post(url, formData, {
@@ -73,58 +73,58 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
         className="flex justify-center"
       >
-<form 
-  onSubmit={handleSubmit} 
-  className="w-full max-w-lg space-y-6 p-4 md:p-8 
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-lg space-y-6 p-4 md:p-8 
              border border-white/10 
              backdrop-blur-[5px] rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
->
-  <div>
-    <label htmlFor="name" className="block text-sm font-medium">Name</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      value={formData.name}
-      onChange={handleChange}
-      className="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-800 text-white"
-      placeholder="Your Name"
-    />
-  </div>
+        >
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-800 text-white"
+              placeholder="Your Name"
+            />
+          </div>
 
-  <div>
-    <label htmlFor="email" className="block text-sm font-medium">Email</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      value={formData.email}
-      onChange={handleChange}
-      className="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-800 text-white"
-      placeholder="Your Email"
-    />
-  </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-800 text-white"
+              placeholder="Your Email"
+            />
+          </div>
 
-  <div>
-    <label htmlFor="message" className="block text-sm font-medium">Message</label>
-    <textarea
-      id="message"
-      name="message"
-      value={formData.message}
-      onChange={handleChange}
-      className="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-800 text-white"
-      placeholder="Your Message"
-      rows="4"
-    />
-  </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-800 text-white"
+              placeholder="Your Message"
+              rows="4"
+            />
+          </div>
 
-  <button
-    type="submit"
-    className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-blue-600"
-  >
-    Send Message
-  </button>
-</form>
+          <button
+            type="submit"
+            className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          >
+            Send Message
+          </button>
+        </form>
 
       </motion.div>
 

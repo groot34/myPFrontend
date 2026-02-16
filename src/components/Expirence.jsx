@@ -7,7 +7,7 @@ import { EXPERIENCES } from '../constants';
 const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
-      contentStyle={{ 
+      contentStyle={{
         background: "rgba(29, 24, 54, 0.3)", // More translucent background
         color: "#fff",
         border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -18,15 +18,15 @@ const ExperienceCard = ({ experience }) => {
       }}
       contentArrowStyle={{ borderRight: '7px solid rgba(29, 24, 54, 0.3)' }}
       date={experience.date}
-      iconStyle={{ 
+      iconStyle={{
         background: experience.iconBg,
         boxShadow: 'none'
       }}
       icon={
         <div className="flex justify-center items-center w-full h-full">
           {experience.icon && (
-            <img 
-              src={experience.icon} 
+            <img
+              src={experience.icon}
               alt={experience.company_name}
               className="rounded-full object-contain"
             />
@@ -74,9 +74,9 @@ const Experience = () => {
       <div className="mt-20 flex flex-col relative">
         <VerticalTimeline lineColor="rgba(255, 255, 255, 0.1)">
           {EXPERIENCES.map((experience, index) => (
-            <ExperienceCard 
-              key={`experience-${index}`} 
-              experience={experience} 
+            <ExperienceCard
+              key={`experience-${index}`}
+              experience={experience}
             />
           ))}
         </VerticalTimeline>
