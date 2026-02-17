@@ -3,6 +3,25 @@ import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
 const TOTAL_FRAMES = 30;
 
+// Exact filenames for each frame — eliminates 404s from suffix guessing
+const FRAME_FILES = [
+    "frame_000_delay-0.067s.png", "frame_001_delay-0.066s.png",
+    "frame_002_delay-0.067s.png", "frame_003_delay-0.067s.png",
+    "frame_004_delay-0.066s.png", "frame_005_delay-0.067s.png",
+    "frame_006_delay-0.067s.png", "frame_007_delay-0.066s.png",
+    "frame_008_delay-0.067s.png", "frame_009_delay-0.067s.png",
+    "frame_010_delay-0.066s.png", "frame_011_delay-0.067s.png",
+    "frame_012_delay-0.067s.png", "frame_013_delay-0.066s.png",
+    "frame_014_delay-0.067s.png", "frame_015_delay-0.067s.png",
+    "frame_016_delay-0.066s.png", "frame_017_delay-0.067s.png",
+    "frame_018_delay-0.067s.png", "frame_019_delay-0.066s.png",
+    "frame_020_delay-0.067s.png", "frame_021_delay-0.067s.png",
+    "frame_022_delay-0.066s.png", "frame_023_delay-0.067s.png",
+    "frame_024_delay-0.067s.png", "frame_025_delay-0.066s.png",
+    "frame_026_delay-0.067s.png", "frame_027_delay-0.067s.png",
+    "frame_028_delay-0.066s.png", "frame_029_delay-0.067s.png",
+];
+
 const ScrollyCanvas = ({ containerRef }) => {
     const canvasRef = useRef(null);
     const imagesRef = useRef([]);
@@ -18,36 +37,22 @@ const ScrollyCanvas = ({ containerRef }) => {
 
     const frameIndex = useTransform(scrollYProgress, [0, 1], [0, 29]);
 
-    // Preload all images — race both possible delay suffixes per frame
+    // Preload all images — one request per frame, no guessing
     useEffect(() => {
         let cancelled = false;
 
         const loadFrame = (i) => {
             return new Promise((resolve) => {
-                const idx = String(i).padStart(3, "0");
-                let resolved = false;
-
-                // Race both possible suffixes — first to load wins
-                ["0.067s", "0.066s"].forEach((suffix) => {
-                    const img = new Image();
-                    img.src = `/sequence/frame_${idx}_delay-${suffix}.png`;
-                    img.onload = () => {
-                        if (!resolved) {
-                            resolved = true;
-                            imagesRef.current[i] = img;
-                            resolve();
-                        }
-                    };
-                    img.onerror = () => {
-                        setTimeout(() => {
-                            if (!resolved) {
-                                resolved = true;
-                                console.warn(`Frame ${idx} failed to load`);
-                                resolve();
-                            }
-                        }, 100);
-                    };
-                });
+                const img = new Image();
+                img.src = `/sequence/${FRAME_FILES[i]}`;
+                img.onload = () => {
+                    imagesRef.current[i] = img;
+                    resolve();
+                };
+                img.onerror = () => {
+                    console.warn(`Frame ${i} failed to load`);
+                    resolve();
+                };
             });
         };
 

@@ -21,9 +21,9 @@ html {
   }
 }
 
-/* Ensure canvas touch scrolling is smooth */
+/* Ensure canvas doesn't interfere with vertical scroll */
 canvas {
-  touch-action: none;
+  touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
 
