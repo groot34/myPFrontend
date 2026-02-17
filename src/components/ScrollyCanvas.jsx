@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
-const TOTAL_FRAMES = 30; // 30 out of 120 = 90° of rotation
+const TOTAL_FRAMES = 120;
+const LAST_FRAME = 25; // Scroll maps to frames 0→44 (~90° with easing). Adjust to taste.
 
 // Generate exact filenames — suffix alternates in a 3-frame pattern: 0.067, 0.066, 0.067
 const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
@@ -23,7 +24,7 @@ const ScrollyCanvas = ({ containerRef }) => {
         offset: ["start start", "end end"],
     });
 
-    const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_FRAMES - 1]);
+    const frameIndex = useTransform(scrollYProgress, [0, 1], [0, LAST_FRAME]);
 
     // Preload all images — one request per frame, no guessing
     useEffect(() => {
