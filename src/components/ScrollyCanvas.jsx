@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useTransform, useMotionValueEvent } from "framer-motion";
 
 const TOTAL_FRAMES = 120;
-const LAST_FRAME = 25; // Scroll maps to frames 0→44 (~90° with easing). Adjust to taste.
+const LAST_FRAME = 25; // Scroll maps to frames 0→LAST_FRAME. Adjust for rotation amount.
 
 // Generate exact filenames — suffix alternates in a 3-frame pattern: 0.067, 0.066, 0.067
 const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
@@ -11,7 +11,21 @@ const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
     return `frame_${idx}_delay-${suffix}.png`;
 });
 
-const ScrollyCanvas = ({ scrollYProgress }) => {
+// Preload all frame images — call during loader so they're ready when Hero mounts
+export const preloadFrames = () => {
+    return Promise.all(
+        FRAME_FILES.map((file) => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = `/sequence/${file}`;
+                img.onload = () => resolve(img);
+                img.onerror = () => resolve(null);
+            });
+        })
+    );
+};
+
+const ScrollyCanvas = ({ scrollYProgress, preloadedImages }) => {
     const canvasRef = useRef(null);
     const imagesRef = useRef([]);
     const currentFrameRef = useRef(0);
@@ -20,41 +34,33 @@ const ScrollyCanvas = ({ scrollYProgress }) => {
 
     const frameIndex = useTransform(scrollYProgress, [0, 1], [0, LAST_FRAME]);
 
-    // Preload all images — one request per frame, no guessing
+    // Use preloaded images if available, otherwise load fresh
     useEffect(() => {
-        let cancelled = false;
+        if (preloadedImages && preloadedImages.length > 0) {
+            imagesRef.current = preloadedImages;
+            setLoaded(true);
+            drawFrame(0);
+            return;
+        }
 
+        let cancelled = false;
         const loadFrame = (i) => {
             return new Promise((resolve) => {
                 const img = new Image();
                 img.src = `/sequence/${FRAME_FILES[i]}`;
-                img.onload = () => {
-                    imagesRef.current[i] = img;
-                    resolve();
-                };
-                img.onerror = () => {
-                    console.warn(`Frame ${i} failed to load`);
-                    resolve();
-                };
+                img.onload = () => { imagesRef.current[i] = img; resolve(); };
+                img.onerror = () => resolve();
             });
         };
 
         const loadAll = async () => {
-            await Promise.all(
-                Array.from({ length: TOTAL_FRAMES }, (_, i) => loadFrame(i))
-            );
-
-            if (!cancelled) {
-                const loadedCount = imagesRef.current.filter(Boolean).length;
-                console.log(`[ScrollyCanvas] TOTAL_FRAMES=${TOTAL_FRAMES}, LAST_FRAME=${LAST_FRAME}, loaded=${loadedCount}`);
-                setLoaded(true);
-                drawFrame(0);
-            }
+            await Promise.all(Array.from({ length: TOTAL_FRAMES }, (_, i) => loadFrame(i)));
+            if (!cancelled) { setLoaded(true); drawFrame(0); }
         };
 
         loadAll();
         return () => { cancelled = true; };
-    }, []);
+    }, [preloadedImages]);
 
     // Draw frame at NATIVE image resolution (800x450)
     // Source PNGs are small — upscaling in canvas causes blur.
@@ -82,7 +88,7 @@ const ScrollyCanvas = ({ scrollYProgress }) => {
     useMotionValueEvent(frameIndex, "change", (latest) => {
         const idx = Math.round(latest);
         if (idx === currentFrameRef.current) return;
-        console.log(`[Scroll] progress=${scrollYProgress.get().toFixed(3)} frame=${idx}/${LAST_FRAME}`);
+
         currentFrameRef.current = idx;
 
         if (rafRef.current) cancelAnimationFrame(rafRef.current);

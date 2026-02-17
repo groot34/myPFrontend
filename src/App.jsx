@@ -9,16 +9,21 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ParticleBackground from "./components/ParticleBackground";
 import LoadingSpinner3D from "./components/loader";
+import { preloadFrames } from "./components/ScrollyCanvas";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [preloadedImages, setPreloadedImages] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Adjust time as needed
+    // Run both in parallel: minimum 3s display + frame preloading
+    const timerPromise = new Promise((r) => setTimeout(r, 3000));
+    const framesPromise = preloadFrames();
 
-    return () => clearTimeout(timer);
+    Promise.all([timerPromise, framesPromise]).then(([, images]) => {
+      setPreloadedImages(images);
+      setIsLoading(false);
+    });
   }, []);
 
   if (isLoading) return <LoadingSpinner3D />;
@@ -45,7 +50,7 @@ const App = () => {
 
       {/* Hero — full-width, starts at top of page (canvas goes edge-to-edge) */}
       <div className="relative z-10">
-        <Hero />
+        <Hero preloadedImages={preloadedImages} />
       </div>
 
       {/* Rest of sections inside container */}

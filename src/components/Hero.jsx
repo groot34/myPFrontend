@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollyCanvas from "./ScrollyCanvas";
 
-const Hero = () => {
+const Hero = ({ preloadedImages }) => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -37,7 +37,7 @@ const Hero = () => {
       {/* Sticky canvas — stays fullscreen while scrolling through the 400vh */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
         {/* Canvas layer */}
-        <ScrollyCanvas scrollYProgress={scrollYProgress} />
+        <ScrollyCanvas scrollYProgress={scrollYProgress} preloadedImages={preloadedImages} />
 
         {/* ——— Overlay 1: Name + Role (centered) ——— */}
         <motion.div
