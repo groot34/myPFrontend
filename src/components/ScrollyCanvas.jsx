@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
 const TOTAL_FRAMES = 120;
-const LAST_FRAME = 25; // Scroll maps to frames 0→44 (~90° with easing). Adjust to taste.
+const LAST_FRAME = 45; // Scroll maps to frames 0→44 (~90° with easing). Adjust to taste.
 
 // Generate exact filenames — suffix alternates in a 3-frame pattern: 0.067, 0.066, 0.067
 const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
@@ -88,6 +88,7 @@ const ScrollyCanvas = ({ containerRef }) => {
     useMotionValueEvent(frameIndex, "change", (latest) => {
         const idx = Math.round(latest);
         if (idx === currentFrameRef.current) return;
+        console.log(`[Scroll] progress=${scrollYProgress.get().toFixed(3)} frame=${idx}/${LAST_FRAME}`);
         currentFrameRef.current = idx;
 
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
