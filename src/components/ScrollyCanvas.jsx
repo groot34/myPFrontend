@@ -1,26 +1,14 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
-const TOTAL_FRAMES = 30;
+const TOTAL_FRAMES = 30; // 30 out of 120 = 90° of rotation
 
-// Exact filenames for each frame — eliminates 404s from suffix guessing
-const FRAME_FILES = [
-    "frame_000_delay-0.067s.png", "frame_001_delay-0.066s.png",
-    "frame_002_delay-0.067s.png", "frame_003_delay-0.067s.png",
-    "frame_004_delay-0.066s.png", "frame_005_delay-0.067s.png",
-    "frame_006_delay-0.067s.png", "frame_007_delay-0.066s.png",
-    "frame_008_delay-0.067s.png", "frame_009_delay-0.067s.png",
-    "frame_010_delay-0.066s.png", "frame_011_delay-0.067s.png",
-    "frame_012_delay-0.067s.png", "frame_013_delay-0.066s.png",
-    "frame_014_delay-0.067s.png", "frame_015_delay-0.067s.png",
-    "frame_016_delay-0.066s.png", "frame_017_delay-0.067s.png",
-    "frame_018_delay-0.067s.png", "frame_019_delay-0.066s.png",
-    "frame_020_delay-0.067s.png", "frame_021_delay-0.067s.png",
-    "frame_022_delay-0.066s.png", "frame_023_delay-0.067s.png",
-    "frame_024_delay-0.067s.png", "frame_025_delay-0.066s.png",
-    "frame_026_delay-0.067s.png", "frame_027_delay-0.067s.png",
-    "frame_028_delay-0.066s.png", "frame_029_delay-0.067s.png",
-];
+// Generate exact filenames — suffix alternates in a 3-frame pattern: 0.067, 0.066, 0.067
+const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
+    const idx = String(i).padStart(3, "0");
+    const suffix = (i % 3 === 1) ? "0.066s" : "0.067s";
+    return `frame_${idx}_delay-${suffix}.png`;
+});
 
 const ScrollyCanvas = ({ containerRef }) => {
     const canvasRef = useRef(null);
@@ -35,7 +23,7 @@ const ScrollyCanvas = ({ containerRef }) => {
         offset: ["start start", "end end"],
     });
 
-    const frameIndex = useTransform(scrollYProgress, [0, 1], [0, 29]);
+    const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_FRAMES - 1]);
 
     // Preload all images — one request per frame, no guessing
     useEffect(() => {
