@@ -51,6 +51,8 @@ const ScrollyCanvas = ({ containerRef }) => {
             );
 
             if (!cancelled) {
+                const loadedCount = imagesRef.current.filter(Boolean).length;
+                console.log(`[ScrollyCanvas] TOTAL_FRAMES=${TOTAL_FRAMES}, LAST_FRAME=${LAST_FRAME}, loaded=${loadedCount}`);
                 setLoaded(true);
                 drawFrame(0);
             }
