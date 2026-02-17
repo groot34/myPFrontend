@@ -37,7 +37,7 @@ const Hero = () => {
       {/* Sticky canvas — stays fullscreen while scrolling through the 400vh */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
         {/* Canvas layer */}
-        <ScrollyCanvas containerRef={containerRef} />
+        <ScrollyCanvas scrollYProgress={scrollYProgress} />
 
         {/* ——— Overlay 1: Name + Role (centered) ——— */}
         <motion.div

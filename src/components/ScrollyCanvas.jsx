@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useTransform, useMotionValueEvent } from "framer-motion";
 
 const TOTAL_FRAMES = 120;
-const LAST_FRAME = 45; // Scroll maps to frames 0→44 (~90° with easing). Adjust to taste.
+const LAST_FRAME = 25; // Scroll maps to frames 0→44 (~90° with easing). Adjust to taste.
 
 // Generate exact filenames — suffix alternates in a 3-frame pattern: 0.067, 0.066, 0.067
 const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
@@ -11,18 +11,12 @@ const FRAME_FILES = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
     return `frame_${idx}_delay-${suffix}.png`;
 });
 
-const ScrollyCanvas = ({ containerRef }) => {
+const ScrollyCanvas = ({ scrollYProgress }) => {
     const canvasRef = useRef(null);
     const imagesRef = useRef([]);
     const currentFrameRef = useRef(0);
     const rafRef = useRef(null);
     const [loaded, setLoaded] = useState(false);
-
-    // Scroll tracking
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"],
-    });
 
     const frameIndex = useTransform(scrollYProgress, [0, 1], [0, LAST_FRAME]);
 
