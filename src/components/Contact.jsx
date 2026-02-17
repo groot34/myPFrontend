@@ -3,7 +3,8 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
-import { FaInstagram, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'; // Import social icons
+import { FaInstagram, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiLeetcode, SiCodeforces } from 'react-icons/si';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
         className="my-10 text-center text-5xl font-semibold"
       >
-        cd ~/Connect
+        $ ping groot34
       </motion.h2>
 
       <motion.div
@@ -120,7 +121,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-cyan-600 w-full text-white px-4 py-2 rounded-md hover:bg-cyan-700"
           >
             Send Message
           </button>
@@ -131,16 +132,22 @@ const Contact = () => {
       {/* Social Icons Section */}
       <div className="flex justify-center mt-8 space-x-8">
         <a href="https://www.instagram.com/a.th.a.rva/" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+          <FaInstagram className="text-3xl text-white hover:text-amber-400 transition duration-300" />
         </a>
         <a href="https://twitter.com/groot34_" target="_blank" rel="noopener noreferrer">
-          <FaTwitter className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+          <FaTwitter className="text-3xl text-white hover:text-amber-400 transition duration-300" />
         </a>
         <a href="https://github.com/groot34" target="_blank" rel="noopener noreferrer">
-          <FaGithub className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+          <FaGithub className="text-3xl text-white hover:text-amber-400 transition duration-300" />
         </a>
         <a href="https://www.linkedin.com/in/groot34/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin className="text-3xl text-white hover:text-gray-400 transition duration-300" />
+          <FaLinkedin className="text-3xl text-white hover:text-amber-400 transition duration-300" />
+        </a>
+        <a href="https://leetcode.com/u/groot34/" target="_blank" rel="noopener noreferrer">
+          <SiLeetcode className="text-3xl text-white hover:text-amber-400 transition duration-300" />
+        </a>
+        <a href="https://codeforces.com/profile/groot34" target="_blank" rel="noopener noreferrer">
+          <SiCodeforces className="text-3xl text-white hover:text-amber-400 transition duration-300" />
         </a>
       </div>
 

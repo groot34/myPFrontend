@@ -1,79 +1,120 @@
-import React from "react";
-import { motion } from "framer-motion";
-import TypingEffect from "./TypingEffect";
-import illustration from "../assets/illustration.svg";
-import headerimg from "../assets/header-img.svg";
-
-const container = (delay) => ({
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      delay: delay,
-    },
-  },
-});
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import ScrollyCanvas from "./ScrollyCanvas";
 
 const Hero = () => {
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  // ── Phase 1 (0%–25%): No text — just the animation plays ──
+
+  // ── Phase 2 (15%–45%): "Atharva / Fresher Full-Stack Developer" ──
+  const overlay1Opacity = useTransform(scrollYProgress, [0.12, 0.18, 0.38, 0.45], [0, 1, 1, 0]);
+  const overlay1Y = useTransform(scrollYProgress, [0.12, 0.45], [30, -30]);
+
+  // ── Phase 3 (45%–70%): "Backend Developer • Reader" ──
+  const overlay2Opacity = useTransform(scrollYProgress, [0.42, 0.48, 0.63, 0.70], [0, 1, 1, 0]);
+  const overlay2Y = useTransform(scrollYProgress, [0.42, 0.70], [30, -30]);
+
+  // ── Phase 4 (70%–92%): "Innovating with AI" ──
+  const overlay3Opacity = useTransform(scrollYProgress, [0.67, 0.73, 0.85, 0.92], [0, 1, 1, 0]);
+  const overlay3Y = useTransform(scrollYProgress, [0.67, 0.92], [30, -30]);
+
+  // ── Fade-out: smooth dissolve into the next section ──
+  const fadeOutOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
+
   return (
-    <div id="hero" className="border-b border-neutral-900 pb-4 lg:mb-35">
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2">
-          <div className="flex flex-col items-center lg:items-start">
-            <motion.h1
-              variants={container(0)}
-              initial="hidden"
-              animate="visible"
-              className="pb-16 text-5xl font-thin tracking-tight lg:mt-16 lg:text-8xl"
-            >
-              <span className="font-semibold">H</span>ola{" "}
-              <span className="text-[#FFFDD0] font-semibold">F</span>olks🫡
-            </motion.h1>
+    <div
+      id="hero"
+      ref={containerRef}
+      className="relative"
+      style={{ height: "300vh" }}
+    >
+      {/* Sticky canvas — stays fullscreen while scrolling through the 400vh */}
+      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
+        {/* Canvas layer */}
+        <ScrollyCanvas containerRef={containerRef} />
 
-            <motion.span
-              variants={container(0.5)}
-              initial="hidden"
-              animate="visible"
-              className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white bg-clip-text text-transparent whitespace-nowrap"
-            >
-              I'm <span className="italic">Atharva Tikale</span>
-            </motion.span>
+        {/* ——— Overlay 1: Name + Role (centered) ——— */}
+        <motion.div
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pointer-events-none"
+          style={{ opacity: overlay1Opacity, y: overlay1Y }}
+        >
+          <h1
+            className="text-5xl sm:text-7xl lg:text-9xl font-display font-bold text-white leading-none tracking-tight"
+            style={{ textShadow: "0 2px 40px rgba(0,0,0,0.6), 0 0px 8px rgba(0,0,0,0.4)" }}
+          >
+            Atharva
+          </h1>
+          {/* Decorative line */}
+          <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-amber-400/70 to-transparent my-4" />
+          <p
+            className="text-base sm:text-xl lg:text-2xl text-neutral-200/90 font-light tracking-[0.2em] sm:tracking-[0.25em] uppercase"
+            style={{ textShadow: "0 1px 20px rgba(0,0,0,0.5)" }}
+          >
+            Full Stack Developer
+          </p>
+        </motion.div>
 
-            <motion.p
-              variants={container(1)}
-              initial="hidden"
-              animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter text-xl"
-            >
-              <TypingEffect />
-            </motion.p>
-          </div>
-        </div>
+        {/* ——— Overlay 2: Tech Stack (left-aligned) ——— */}
+        <motion.div
+          className="absolute inset-0 z-10 flex flex-col items-start justify-center px-6 sm:px-16 lg:px-24 pointer-events-none"
+          style={{ opacity: overlay2Opacity, y: overlay2Y }}
+        >
+          <p
+            className="text-sm sm:text-base lg:text-lg text-amber-400/80 font-mono tracking-widest uppercase mb-3"
+            style={{ textShadow: "0 1px 10px rgba(0,0,0,0.5)" }}
+          >
+            tech_stack
+          </p>
+          <p
+            className="text-xl sm:text-3xl lg:text-5xl font-display font-bold text-white tracking-tight"
+            style={{ textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
+          >
+            React • Node.js • Go
+          </p>
+          <p
+            className="mt-2 text-base sm:text-xl lg:text-2xl text-neutral-300/70 font-light tracking-wide"
+            style={{ textShadow: "0 1px 15px rgba(0,0,0,0.5)" }}
+          >
+            Next.js • PostgreSQL • MongoDB
+          </p>
+        </motion.div>
 
-        <div className=" w-full lg:w-1/2 lg:p-8">
-          <motion.img
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 1,
-              delay: 0.2,
-              y: {
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "loop",
-              },
-            }}
-            src={headerimg}
-            alt="profile pic"
-            className="w-9/12 sm:w-7/12 lg:w-6/12 xl:w-5/12 mx-auto sm:ml-auto"
-          />
-        </div>
+        {/* ——— Overlay 3: Focus Areas (right-aligned) ——— */}
+        <motion.div
+          className="absolute inset-0 z-10 flex flex-col items-end justify-center px-6 sm:px-16 lg:px-24 pointer-events-none"
+          style={{ opacity: overlay3Opacity, y: overlay3Y }}
+        >
+          <p
+            className="text-sm sm:text-base lg:text-lg text-cyan-400/80 font-mono tracking-widest uppercase mb-3 text-right"
+            style={{ textShadow: "0 1px 10px rgba(0,0,0,0.5)" }}
+          >
+            current_focus
+          </p>
+          <p
+            className="text-xl sm:text-3xl lg:text-5xl font-display font-bold text-white tracking-tight text-right"
+            style={{ textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
+          >
+            Scalable Systems
+          </p>
+          <p
+            className="mt-2 text-base sm:text-xl lg:text-2xl text-neutral-300/70 font-light tracking-wide text-right"
+            style={{ textShadow: "0 1px 15px rgba(0,0,0,0.5)" }}
+          >
+            GenAI • System Design • Microservices
+          </p>
+        </motion.div>
+
+        {/* Smooth fade-to-black overlay — dissolves canvas into the dark bg */}
+        <motion.div
+          className="absolute inset-0 z-20 pointer-events-none"
+          style={{ opacity: fadeOutOpacity, backgroundColor: '#050208' }}
+        />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "rgba(29, 24, 54, 0.3)", // More translucent background
+        background: "rgba(40, 25, 15, 0.35)",
         color: "#fff",
         border: '1px solid rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(5px)',
@@ -16,7 +16,7 @@ const ExperienceCard = ({ experience }) => {
         borderRadius: '8px',
         padding: '2rem',
       }}
-      contentArrowStyle={{ borderRight: '7px solid rgba(29, 24, 54, 0.3)' }}
+      contentArrowStyle={{ borderRight: '7px solid rgba(40, 25, 15, 0.35)' }}
       date={experience.date}
       iconStyle={{
         background: experience.iconBg,
@@ -38,7 +38,7 @@ const ExperienceCard = ({ experience }) => {
         <h3 className="text-white text-[24px] font-bold">
           {experience.title}
         </h3>
-        <p className="text-blue-400 text-[16px] font-semibold" style={{ margin: 0 }}>
+        <p className="text-cyan-400 text-[16px] font-semibold" style={{ margin: 0 }}>
           {experience.company_name}
         </p>
       </div>
@@ -67,7 +67,7 @@ const Experience = () => {
         className="text-center mb-16 relative z-10"
       >
         <h2 className="font-semibold text-5xl my-20 text-white mb-4">
-          cd ~/Experience
+          $ git log --oneline
         </h2>
       </motion.div>
 

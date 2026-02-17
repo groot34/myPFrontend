@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import aboutAtharva2 from "../assets/Atharva-removablebg-2.png";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
 import { services } from "../constants";
@@ -52,7 +51,7 @@ const ServiceCard = ({ index, title, icon }) => {
       onHoverStart={() => setIsRotated(!isRotated)} // Rotate on hover
     >
       <motion.div
-        className="bg-gradient-to-br from-[#10102e] to-[#292d54] rounded-[20px] py-5 px-12 min-h-[200px] flex justify-evenly items-center flex-col"
+        className="bg-gradient-to-br from-[#1a1510] to-[#1e2a35] rounded-[20px] py-5 px-12 min-h-[200px] flex justify-evenly items-center flex-col"
         animate={{ rotateY: isRotated ? 180 : 0 }} // Animate Y-axis rotation
         transition={{ duration: 0.6, type: "spring" }}
       >
@@ -70,42 +69,22 @@ const About = () => {
   return (
     <div id="about" className="border-b border-neutral-900 pb-4">
       <h2 className="my-20 text-center text-5xl">
-        cd ~/groot34
+        $ whoami
 
       </h2>
 
-      <div className="flex flex-wrap">
-        {/* About Image */}
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2 lg:p-8"
-        >
-          <div className="flex items-center justify-center">
-            <img
-              className="w-52 h-52"
-              src={aboutAtharva2}
-              alt="Atharva Tikale"
-            />
-          </div>
-        </motion.div>
-
-        {/* About Text */}
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2"
-        >
-          <div className="flex justify-center lg:justify-start">
-            <p
-              className="my-2 max-w-xl py-6 text-lg"
-              dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }}
-            />
-          </div>
-        </motion.div>
-      </div>
+      {/* About Text — full-width centered, no illustration */}
+      <motion.div
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 40 }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-center"
+      >
+        <p
+          className="my-2 max-w-3xl py-6 text-lg text-center leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }}
+        />
+      </motion.div>
 
 
       {/* Services Cards */}

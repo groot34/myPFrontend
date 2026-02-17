@@ -48,7 +48,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
               {project.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="mr-2 mb-2 inline-block rounded bg-purple-800 px-2 py-1 text-sm font-medium text-white"
+                  className="mr-2 mb-2 inline-block rounded bg-amber-700/80 px-2 py-1 text-sm font-medium text-white"
                 >
                   {tech}
                 </span>
@@ -58,7 +58,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
             <div className="flex flex-col space-y-3">
               <button
                 onClick={() => handleClick(project.liveLink)}
-                className="w-full cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg text-sm"
+                className="w-full cursor-pointer rounded bg-cyan-600 px-4 py-2 text-white hover:bg-cyan-700 transition duration-300 shadow-md hover:shadow-lg text-sm"
               >
                 Live Demo
               </button>
@@ -100,7 +100,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
           {project.technologies.map((tech, techIndex) => (
             <span
               key={techIndex}
-              className="rounded bg-purple-800 px-2 py-1 text-sm font-medium text-white whitespace-nowrap"
+              className="rounded bg-amber-700/80 px-2 py-1 text-sm font-medium text-white whitespace-nowrap"
             >
               {tech}
             </span>
@@ -111,7 +111,7 @@ const ProjectCard = ({ project, handleClick, isMobile }) => {
           {project?.liveLink && project.liveLink.trim() !== "" && (
             <button
               onClick={() => handleClick(project.liveLink)}
-              className="cursor-pointer rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg text-sm"
+              className="cursor-pointer rounded bg-cyan-600 px-3 py-1 text-white hover:bg-cyan-700 transition duration-300 shadow-md hover:shadow-lg text-sm"
             >
               Live Demo
             </button>
@@ -181,7 +181,7 @@ const Projects = () => {
         transition={{ duration: 0.5 }}
         className="my-16 text-center text-5xl font-semibold text-gray-200"
       >
-        cd ~/Projects
+        $ ls -la projects/
       </motion.h2>
 
       <div className="overflow-hidden w-full">

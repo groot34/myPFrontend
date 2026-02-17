@@ -10,6 +10,21 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix 100vh on mobile browsers (accounts for URL bar) */
+@supports (height: 100dvh) {
+  .h-screen {
+    height: 100dvh !important;
+  }
+}
+
+/* Ensure canvas touch scrolling is smooth */
+canvas {
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 

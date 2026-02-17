@@ -8,6 +8,7 @@ import project7 from "../assets/projects/project-7.png";
 import project8 from "../assets/projects/project-8.png";
 import project9 from "../assets/projects/project-9.png";
 import project10 from "../assets/projects/project-10.png";
+import project11 from "../assets/projects/project-11.png";
 
 import frontend from "../assets/cards/frontend.png";
 import backend from "../assets/cards/backend.png";
@@ -144,31 +145,44 @@ technologies: ["Go", "Bubble Tea", "Lipgloss"],
   liveLink: "https://newsiq.vercel.app",
   githubLink: "https://github.com/groot34/NewsIQ",
   },
-    {
-  title: "Mini CRM Backend",
-  image: project10,
-  description:
-    "A production-ready CRM backend built with NestJS, providing secure user management, customer and task workflows, and role-based access control using JWT authentication.",
-  technologies: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "JWT"],
-  liveLink: "https://mini-crm-backend-mz35.onrender.com/api",
-  githubLink: "https://github.com/groot34/mini-crm-backend",
-}
+  {
+    title: "Mini CRM Backend",
+    image: project10,
+    description:
+      "A production-ready CRM backend built with NestJS, providing secure user management, customer and task workflows, and role-based access control using JWT authentication.",
+    technologies: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "JWT"],
+    liveLink: "https://mini-crm-backend-mz35.onrender.com/api",
+    githubLink: "https://github.com/groot34/mini-crm-backend",
+  },
+  {
+    title: "Insight Forge",
+    image: project11,
+    description:
+      "An AI-powered data analysis web app that transforms raw CSV files into meaningful insights. Users can upload datasets, preview them in interactive tables, generate automatic visualisations, and receive AI-generated summaries of trends, outliers, and key findings.",
+    technologies: ["Next.js", "TypeScript", "Groq AI", "Chart.js", "Tailwind CSS"],
+    liveLink: "https://insight-forge-nu.vercel.app/",
+    githubLink: "https://github.com/groot34/insight-forge",
+  },
 ];
 
 export const services = [
   {
+    id: "frontend",
     title: "Frontend Developer",
     icon: frontend,
   },
   {
+    id: "ux",
     title: "UI/UX Design",
     icon: ux,
   },
   {
+    id: "web",
     title: "Web devlopement",
     icon: prototyping,
   },
   {
+    id: "backend",
     title: "Backend Developer",
     icon: backend,
   },

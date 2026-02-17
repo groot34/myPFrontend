@@ -24,16 +24,32 @@ const App = () => {
   if (isLoading) return <LoadingSpinner3D />;
 
   return (
-    <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
+    <div className="text-neutral-300 antialiased selection:bg-amber-300 selection:text-amber-900">
       <div className="fixed top-0 left-0 w-full h-full -z-20">
-        <div className="absolute top-0 left-0 w-full h-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] z-[-2]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[#050208] z-[-2]" style={{
+          backgroundImage: `
+            radial-gradient(ellipse 80% 50% at 50% 100%, rgba(180,100,40,0.12), transparent),
+            radial-gradient(ellipse 60% 60% at 50% -10%, rgba(40,80,140,0.15), transparent)
+          `
+        }}></div>
 
         <ParticleBackground />
       </div>
 
-      <div className="relative container mx-auto px-8 z-10">
-        <Navbar />
+      {/* Navbar — floats over the Hero canvas */}
+      <div className="absolute top-0 left-0 right-0 z-30">
+        <div className="container mx-auto px-8">
+          <Navbar />
+        </div>
+      </div>
+
+      {/* Hero — full-width, starts at top of page (canvas goes edge-to-edge) */}
+      <div className="relative z-10">
         <Hero />
+      </div>
+
+      {/* Rest of sections inside container */}
+      <div className="relative container mx-auto px-8 z-10">
         <About />
         <Technologies />
         <Expirence />
