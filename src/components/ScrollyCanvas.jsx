@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useTransform, useMotionValueEvent } from "framer-motion";
 
-const TOTAL_FRAMES = 120;
+const TOTAL_FRAMES = 36;
 const LAST_FRAME = 30; // Scroll maps to frames 0→LAST_FRAME. Adjust for rotation amount.
 
 // Generate exact filenames — suffix alternates in a 3-frame pattern: 0.067, 0.066, 0.067
