@@ -114,12 +114,8 @@ const ScrollyCanvas = ({ scrollYProgress, preloadedImages }) => {
 
             <canvas
                 ref={canvasRef}
+                className="block w-full h-full object-cover object-[center_30%] transform scale-[1.05] -translate-x-[5%] md:-translate-x-[1.65%]"
                 style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center 30%",
-                    display: "block",
                     opacity: loaded ? 1 : 0,
                     transition: "opacity 0.5s ease",
                 }}
