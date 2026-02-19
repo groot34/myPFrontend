@@ -158,7 +158,7 @@ technologies: ["Go", "Bubble Tea", "Lipgloss"],
     title: "Insight Forge",
     image: project11,
     description:
-      "An AI-powered data analysis web app that transforms raw CSV files into meaningful insights. Users can upload datasets, preview them in interactive tables, generate automatic visualisations, and receive AI-generated summaries of trends, outliers, and key findings.",
+      "An AI-powered data analysis platform that transforms raw CSVs into actionable insights, offering interactive previews, automated visualizations, and intelligent summaries of trends and key findings.",
     technologies: ["Next.js", "TypeScript", "Groq AI", "Chart.js", "Tailwind CSS"],
     liveLink: "https://insight-forge-nu.vercel.app/",
     githubLink: "https://github.com/groot34/insight-forge",
